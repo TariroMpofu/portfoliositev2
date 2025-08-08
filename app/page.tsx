@@ -40,9 +40,7 @@ const workProjects = [
       "I wrote and published a paper on customer attrition, which merits special attention by mobile telecom service providers. I then designed predictive telecom churn analysis model, specifically for the Zimbabwean market, using a Random Forest algorithm that has a 87% accuracy. Finally I developed a user-friendly flask web application for seamless model deployment.",
     tags: ["Python", "django", "HTML", "CSS", "Heroku"],
     link: "https://drive.google.com/drive/folders/1FY6Z3xyQW2narXeCFmuPvZSm0H1BgU5K?usp=drive_link",
-    platforms: [
-      { icon: MdBatchPrediction, color: "#4285F4" },
-    ],
+    platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
   },
   {
     title: "FDMS Buyer Details Compliance",
@@ -60,6 +58,16 @@ const workProjects = [
     link: "https://drive.google.com/file/d/1jfYG17LkdzakENnvtOPIZbjtui5qE6dO/view?usp=drive_link",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
   },
+
+  {
+    title: "SAP Sales Analysis Dashboard (Sample)",
+    description:
+      "As part of Touch's inaugural analytics launch, I developed this interactive sales analytics dashboard in SAP Business One as a cornerstone proof-of-concept—demonstrating how strategic data visualization transforms executive decision-making, particularly for businesses currently using platforms like iVend and exploring SAP as a next step. This sample highlights how SAP can consolidate and visualize critical sales data across regions, employees, customer groups, and warehouses. Executives can easily track top-selling items, profit margins, customer trends, and stock movement. Filters and dynamic charts empower leadership to drill into specific time periods or product lines—unlocking actionable insights for growth, margin protection, and strategic planning.",
+    tags: ["SAP Business One", "Power BI (optional integration)"],
+    link: "https://drive.google.com/file/d/1mW6f4qu-vXOqpruGjqNHdG_kX2c2Xw1t/view?usp=sharing",
+    platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
+  },
+
   {
     title: "Kwizi",
     description:
@@ -73,7 +81,7 @@ const workProjects = [
     description:
       "I've created a web application that serves as a valuable resource for individuals eager to deepen their understanding of Islamic terminology and spirituality. Initially developed for a specific client, I am now attempting to expand it to cater to a diverse audience, including Islamic Studies Students, Spiritual Seekers, and Language Enthusiasts.",
     tags: ["HTML", "Bootstrap", "CSS", "Javascript", "Supabase"],
-    link: "https://drive.google.com/drive/folders/1DflctijMfSiKoaNeWVXrhqxAjuWTm_o5?usp=sharing",
+    link: "https://drive.google.com/file/d/1pfjt9q6vzFPYwapTXkNIlbF8zNHzROBG/view?usp=sharing",
     platforms: [{ icon: TbWorld, color: "#4285F4" }],
   },
   {
@@ -196,7 +204,15 @@ export default function Home() {
         const sectionBottom = sectionTop + section.offsetHeight;
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          setActiveSection(section.id);
+          const sectionId = section.id;
+          setActiveSection(sectionId);
+
+          // Update URL hash based on scroll position
+          if (sectionId !== "intro") {
+            window.history.replaceState(null, "", `#${sectionId}`);
+          } else {
+            window.history.replaceState(null, "", window.location.pathname);
+          }
         }
       });
     };
@@ -206,6 +222,42 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Hash navigation support
+  useEffect(() => {
+    // Handle hash on initial page load
+    const handleHashNavigation = () => {
+      const hash = window.location.hash.substring(1); // Remove the #
+      if (hash && sections.some((section) => section.id === hash)) {
+        setActiveSection(hash);
+        // Small delay to ensure the page has loaded
+        setTimeout(() => {
+          scrollToSection(hash);
+        }, 100);
+      }
+    };
+
+    // Check for hash on component mount (after loading is complete)
+    if (!loading) {
+      handleHashNavigation();
+    }
+
+    // Listen for hash changes (when user manually changes URL or uses back/forward)
+    const handleHashChange = () => {
+      const newHash = window.location.hash.substring(1);
+      if (newHash && sections.some((section) => section.id === newHash)) {
+        setActiveSection(newHash);
+        scrollToSection(newHash);
+      } else if (!newHash) {
+        // If hash is removed, go to intro
+        setActiveSection("intro");
+        scrollToSection("intro");
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [loading]);
 
   const handleHorizontalScroll = () => {
     if (scrollContainerRef.current) {
@@ -230,6 +282,15 @@ export default function Home() {
         top: offset,
         behavior: "smooth",
       });
+
+      // Update the URL hash without causing a page reload
+      if (sectionId !== "intro") {
+        window.history.pushState(null, "", `#${sectionId}`);
+      } else {
+        // Remove hash for intro section
+        window.history.pushState(null, "", window.location.pathname);
+      }
+
       setIsMenuOpen(false);
     }
   };
@@ -305,21 +366,23 @@ export default function Home() {
                 <AnimatePresence>
                   {isNameExpanded && (
                     <div className="flex">
-                      {['a', 'r', 'i', 'r', 'o', 'M', '.'].map((letter, index) => (
-                        <motion.span
-                          key={index}
-                          initial={{ opacity: 0, x: -5 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 5 }}
-                          transition={{
-                            duration: 0.1,
-                            delay: index * 0.02,
-                            ease: "easeOut",
-                          }}
-                        >
-                          {letter}
-                        </motion.span>
-                      ))}
+                      {["a", "r", "i", "r", "o", "M", "."].map(
+                        (letter, index) => (
+                          <motion.span
+                            key={index}
+                            initial={{ opacity: 0, x: -5 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 5 }}
+                            transition={{
+                              duration: 0.1,
+                              delay: index * 0.02,
+                              ease: "easeOut",
+                            }}
+                          >
+                            {letter}
+                          </motion.span>
+                        )
+                      )}
                     </div>
                   )}
                 </AnimatePresence>
@@ -585,7 +648,7 @@ export default function Home() {
                     <div className="mt-16">
                       <div className="relative w-40 h-40 flex-shrink-0 mb-8">
                         <Image
-                          src="/Touch.png"
+                          src="/TOUCH-AFRICA.png"
                           alt="TA Logo"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
