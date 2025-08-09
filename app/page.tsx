@@ -307,18 +307,15 @@ export default function Home() {
     <div
       className={`${spaceGrotesk.className} bg-black text-[#fefeff] flex flex-col min-h-screen`}
     >
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-KD6ZK493X5"
-      />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-KD6ZK493X5');
-        `}
-      </Script>
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZNM8V2BK5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CZNM8V2BK5');
+</script>
 
       <AnimatePresence mode="wait">
         {loading ? (
@@ -905,3 +902,4 @@ export default function Home() {
     </div>
   );
 }
+
