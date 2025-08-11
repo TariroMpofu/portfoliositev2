@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Space_Grotesk } from "next/font/google";
 import Image from "next/image";
@@ -12,12 +12,40 @@ import { BiLock, BiMobile } from "react-icons/bi";
 import { BsAndroid } from "react-icons/bs";
 import { MdBatchPrediction } from "react-icons/md";
 
+// Constants
+const LOADING_DURATION = 1500; // Reduced from 2500ms
+const SCROLL_OFFSET = 100;
+const THROTTLE_DELAY = 16; // ~60fps
+
 const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
-const sections = [
+// Types
+interface Section {
+  id: string;
+  title: string;
+}
+
+interface WorkProject {
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+  platforms: { icon: React.ComponentType<any>; color?: string }[];
+}
+
+type AudienceType = "anyone" | "recruiters" | "engineers" | "product-managers";
+
+interface AudienceContent {
+  title: string;
+  description: React.ReactNode;
+  skills: React.ReactNode[];
+}
+
+// Data
+const sections: Section[] = [
   { id: "intro", title: "Intro" },
   { id: "work", title: "Work" },
   { id: "background", title: "Background" },
@@ -25,7 +53,7 @@ const sections = [
   { id: "contact", title: "Contact" },
 ];
 
-const workProjects = [
+const workProjects: WorkProject[] = [
   {
     title: "Relay",
     description:
@@ -58,7 +86,6 @@ const workProjects = [
     link: "https://drive.google.com/file/d/1jfYG17LkdzakENnvtOPIZbjtui5qE6dO/view?usp=drive_link",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
   },
-
   {
     title: "SAP Sales Analysis Dashboard (Sample)",
     description:
@@ -67,7 +94,6 @@ const workProjects = [
     link: "https://drive.google.com/file/d/1mW6f4qu-vXOqpruGjqNHdG_kX2c2Xw1t/view?usp=sharing",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
   },
-
   {
     title: "Kwizi",
     description:
@@ -90,6 +116,7 @@ const workProjects = [
       "I developed a VB.Net-SQL desktop platform meticulously cataloging I.T. assets and streamlining clearance management for Cairns IT Department, intended to replace their outdated paper filing procedure.",
     tags: ["Visual Basic", "SQL"],
     platforms: [{ icon: BiLock, color: "#4285F4" }],
+    link: "#", // ← Add the link here, replace '#' with actual URL if available
   },
   {
     title: "This Website!",
@@ -97,17 +124,16 @@ const workProjects = [
       "An online portfolio thoughtfully designed to showcase my skills, achievements, and projects. A digital representation of my journey, expertise, and passion in informatics, presented in a dynamic and user-friendly format.",
     tags: ["React", "Vite", "TypeScript", "Framer Motion", "Tailwind CSS"],
     platforms: [{ icon: BiLock, color: "#4285F4" }],
+    link: "#", // ← Same here
   },
 ];
 
-type AudienceType = "anyone" | "recruiters" | "engineers" | "product-managers";
-
-const audienceContent = {
+const audienceContent: Record<AudienceType, AudienceContent> = {
   anyone: {
     title: "For Anyone",
     description:
       "I'm a developer who loves creating meaningful digital experiences, with a focus on tech, minimalism, and where they intersect.",
-    skills: [""],
+    skills: [],
   },
   recruiters: {
     title: "Recruiters",
@@ -127,6 +153,7 @@ const audienceContent = {
     ),
     skills: [
       <a
+        key="resume-recruiters"
         href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=sharing"
         download
         className="hover:text-[#fefeff] transition-colors"
@@ -154,6 +181,7 @@ const audienceContent = {
     ),
     skills: [
       <a
+        key="resume-engineers"
         href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=sharing"
         download
         className="hover:text-[#fefeff] transition-colors"
@@ -168,6 +196,7 @@ const audienceContent = {
       "I bring technical expertise to product development, bridging the gap between business objectives and technical execution.",
     skills: [
       <a
+        key="resume-pm"
         href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=sharing"
         download
         className="hover:text-[#fefeff] transition-colors"
@@ -178,130 +207,378 @@ const audienceContent = {
   },
 };
 
-export default function Home() {
-  const [loading, setLoading] = useState(true);
+// Custom hooks
+const useThrottledScroll = (
+  callback: () => void,
+  delay: number = THROTTLE_DELAY
+) => {
+  const callbackRef = useRef(callback);
+  const lastRun = useRef(0);
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  });
+
+  return useCallback(() => {
+    if (Date.now() - lastRun.current >= delay) {
+      callbackRef.current();
+      lastRun.current = Date.now();
+    }
+  }, [delay]);
+};
+
+const useNavigation = () => {
   const [activeSection, setActiveSection] = useState("intro");
-  const [selectedAudience, setSelectedAudience] =
-    useState<AudienceType>("anyone");
-  const [isNameExpanded, setIsNameExpanded] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const isScrollingRef = useRef(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
-      const scrollPosition = window.scrollY;
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionBottom = sectionTop + section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          const sectionId = section.id;
-          setActiveSection(sectionId);
-
-          // Update URL hash based on scroll position
-          if (sectionId !== "intro") {
-            window.history.replaceState(null, "", `#${sectionId}`);
-          } else {
-            window.history.replaceState(null, "", window.location.pathname);
-          }
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // Hash navigation support
-  useEffect(() => {
-    // Handle hash on initial page load
-    const handleHashNavigation = () => {
-      const hash = window.location.hash.substring(1); // Remove the #
-      if (hash && sections.some((section) => section.id === hash)) {
-        setActiveSection(hash);
-        // Small delay to ensure the page has loaded
-        setTimeout(() => {
-          scrollToSection(hash);
-        }, 100);
-      }
-    };
-
-    // Check for hash on component mount (after loading is complete)
-    if (!loading) {
-      handleHashNavigation();
-    }
-
-    // Listen for hash changes (when user manually changes URL or uses back/forward)
-    const handleHashChange = () => {
-      const newHash = window.location.hash.substring(1);
-      if (newHash && sections.some((section) => section.id === newHash)) {
-        setActiveSection(newHash);
-        scrollToSection(newHash);
-      } else if (!newHash) {
-        // If hash is removed, go to intro
-        setActiveSection("intro");
-        scrollToSection("intro");
-      }
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [loading]);
-
-  const handleHorizontalScroll = () => {
-    if (scrollContainerRef.current) {
-      setScrollPosition(scrollContainerRef.current.scrollLeft);
-    }
-  };
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      container.addEventListener("scroll", handleHorizontalScroll);
-      return () =>
-        container.removeEventListener("scroll", handleHorizontalScroll);
-    }
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = useCallback((sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
+      isScrollingRef.current = true;
       const offset = sectionId === "intro" ? 0 : section.offsetTop;
+
       window.scrollTo({
         top: offset,
         behavior: "smooth",
       });
 
-      // Update the URL hash without causing a page reload
+      // Update URL and state
+      setActiveSection(sectionId);
       if (sectionId !== "intro") {
         window.history.pushState(null, "", `#${sectionId}`);
       } else {
-        // Remove hash for intro section
         window.history.pushState(null, "", window.location.pathname);
       }
 
-      setIsMenuOpen(false);
+      // Reset scrolling flag after animation completes
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 1000);
     }
-  };
+  }, []);
 
-  const handleLogoClick = () => {
-    if (window.innerWidth < 768) {
-      setIsNameExpanded(!isNameExpanded);
-    } else {
-      window.location.reload();
+  const updateActiveSection = useCallback(() => {
+    if (isScrollingRef.current) return;
+
+    const sections = document.querySelectorAll("section");
+    const scrollPosition = window.scrollY;
+
+    let currentSection = "intro";
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - SCROLL_OFFSET;
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        currentSection = section.id;
+      }
+    });
+
+    if (currentSection !== activeSection) {
+      setActiveSection(currentSection);
+
+      // Update URL without triggering scroll
+      if (currentSection !== "intro") {
+        window.history.replaceState(null, "", `#${currentSection}`);
+      } else {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
     }
-  };
+  }, [activeSection]);
+
+  const throttledUpdateActiveSection = useThrottledScroll(updateActiveSection);
+
+  useEffect(() => {
+    window.addEventListener("scroll", throttledUpdateActiveSection, {
+      passive: true,
+    });
+    return () =>
+      window.removeEventListener("scroll", throttledUpdateActiveSection);
+  }, [throttledUpdateActiveSection]);
+
+  // Handle initial hash navigation
+  useEffect(() => {
+    const handleInitialHash = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash && sections.some((section) => section.id === hash)) {
+        setTimeout(() => scrollToSection(hash), 100);
+      }
+    };
+
+    const handleHashChange = () => {
+      const newHash = window.location.hash.substring(1);
+      if (newHash && sections.some((section) => section.id === newHash)) {
+        scrollToSection(newHash);
+      } else if (!newHash) {
+        scrollToSection("intro");
+      }
+    };
+
+    handleInitialHash();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [scrollToSection]);
+
+  return { activeSection, scrollToSection };
+};
+
+// Components
+const LoadingScreen = () => (
+  <motion.div
+    key="loader"
+    className="h-screen w-screen flex items-center justify-center bg-black"
+    exit={{ opacity: 0, transition: { duration: 0.5 } }}
+  >
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-center"
+    >
+      <motion.h1
+        className="text-[12vw] md:text-[8vw] font-medium leading-none"
+        animate={{
+          opacity: [1, 0],
+          y: [0, -20],
+          transition: { duration: 0.5, delay: 1 },
+        }}
+      >
+        Tariro M.
+      </motion.h1>
+    </motion.div>
+  </motion.div>
+);
+
+const Logo = ({
+  isExpanded,
+  onToggle,
+}: {
+  isExpanded: boolean;
+  onToggle: () => void;
+}) => (
+  <motion.div
+    className="fixed top-8 left-4 md:left-8 z-50 cursor-pointer"
+    onHoverStart={() => window.innerWidth >= 768 && onToggle()}
+    onHoverEnd={() => window.innerWidth >= 768 && onToggle()}
+    onClick={() =>
+      window.innerWidth < 768 ? onToggle() : window.location.reload()
+    }
+    whileTap={{ scale: 0.95 }}
+  >
+    <div className="relative text-3xl font-medium flex">
+      <span>T</span>
+      <AnimatePresence>
+        {isExpanded && (
+          <div className="flex">
+            {["a", "r", "i", "r", "o", "M", "."].map((letter, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, x: -5 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 5 }}
+                transition={{
+                  duration: 0.1,
+                  delay: index * 0.02,
+                  ease: "easeOut",
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </div>
+        )}
+      </AnimatePresence>
+    </div>
+  </motion.div>
+);
+
+const MobileMenu = ({
+  isOpen,
+  onClose,
+  activeSection,
+  scrollToSection,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  activeSection: string;
+  scrollToSection: (section: string) => void;
+}) => {
+  // Close on outside click
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (isOpen && !(e.target as Element).closest(".mobile-menu")) {
+        onClose();
+      }
+    };
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, onClose]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "tween", duration: 0.3 }}
+          className="mobile-menu fixed inset-0 bg-black z-40 md:hidden pt-24 px-8"
+        >
+          {sections.map(({ id, title }) => (
+            <div key={id} className="mb-6">
+              <button
+                onClick={() => {
+                  scrollToSection(id);
+                  onClose();
+                }}
+                className="text-2xl font-medium"
+              >
+                <span
+                  className={`${
+                    activeSection === id ? "text-[#fefeff]" : "text-[#969696]"
+                  }`}
+                >
+                  {title}
+                </span>
+              </button>
+            </div>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const DesktopNavigation = ({
+  activeSection,
+  scrollToSection,
+}: {
+  activeSection: string;
+  scrollToSection: (section: string) => void;
+}) => (
+  <nav className="hidden md:block fixed left-8 top-1/2 -translate-y-1/2 z-40">
+    {sections.map(({ id, title }) => (
+      <div key={id} className="mb-4 text-left">
+        <button
+          onClick={() => scrollToSection(id)}
+          className="group flex items-center gap-2 text-sm"
+        >
+          <span
+            className={`transition-all duration-300 ${
+              activeSection === id ? "text-[#fefeff]" : "text-[#969696]"
+            }`}
+          >
+            {title}
+          </span>
+        </button>
+      </div>
+    ))}
+  </nav>
+);
+
+const AudienceSelector = ({
+  selectedAudience,
+  onAudienceChange,
+}: {
+  selectedAudience: AudienceType;
+  onAudienceChange: (audience: AudienceType) => void;
+}) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleHorizontalScroll = useCallback(() => {
+    if (scrollContainerRef.current) {
+      setScrollPosition(scrollContainerRef.current.scrollLeft);
+    }
+  }, []);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleHorizontalScroll, {
+        passive: true,
+      });
+      return () =>
+        container.removeEventListener("scroll", handleHorizontalScroll);
+    }
+  }, [handleHorizontalScroll]);
+
+  const audiences: AudienceType[] = [
+    "anyone",
+    "recruiters",
+    "engineers",
+    "product-managers",
+  ];
+
+  return (
+    <div className="relative md:static mb-8">
+      <div
+        className="absolute left-0 z-10 w-12 h-full bg-gradient-to-r from-black to-transparent pointer-events-none"
+        style={{
+          opacity: scrollPosition > 0 ? 1 : 0,
+          transition: "opacity 0.3s ease",
+        }}
+      />
+      <div className="absolute right-0 z-10 w-12 h-full bg-gradient-to-l from-black to-transparent pointer-events-none" />
+      <div
+        ref={scrollContainerRef}
+        className="flex gap-4 md:gap-8 justify-start md:justify-center text-sm overflow-x-auto scrollbar-hide px-4"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        {audiences.map((audience) => (
+          <button
+            key={audience}
+            onClick={() => onAudienceChange(audience)}
+            className={`transition-colors whitespace-nowrap flex-shrink-0 ${
+              selectedAudience === audience
+                ? "text-[#fefeff] font-medium"
+                : "text-[#969696] hover:text-[#fefeff]"
+            }`}
+          >
+            {audienceContent[audience].title}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const [selectedAudience, setSelectedAudience] =
+    useState<AudienceType>("anyone");
+  const [isNameExpanded, setIsNameExpanded] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { activeSection, scrollToSection } = useNavigation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), LOADING_DURATION);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const currentAudienceContent = useMemo(
+    () => audienceContent[selectedAudience],
+    [selectedAudience]
+  );
 
   return (
     <div
@@ -322,29 +599,7 @@ export default function Home() {
 
       <AnimatePresence mode="wait">
         {loading ? (
-          <motion.div
-            key="loader"
-            className="h-screen w-screen flex items-center justify-center bg-black"
-            exit={{ opacity: 0, transition: { duration: 0.5 } }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center"
-            >
-              <motion.h1
-                className="text-[12vw] md:text-[8vw] font-medium leading-none"
-                animate={{
-                  opacity: [1, 0],
-                  y: [0, -20],
-                  transition: { duration: 0.5, delay: 1.5 },
-                }}
-              >
-                Tariro M.
-              </motion.h1>
-            </motion.div>
-          </motion.div>
+          <LoadingScreen />
         ) : (
           <motion.div
             key="content"
@@ -353,172 +608,60 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="flex-grow"
           >
-            {/* Logo */}
-            <motion.div
-              className="fixed top-8 left-4 md:left-8 z-50 cursor-pointer"
-              onHoverStart={() => setIsNameExpanded(true)}
-              onHoverEnd={() => setIsNameExpanded(false)}
-              onClick={handleLogoClick}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="relative text-3xl font-medium flex">
-                <span>T</span>
-                <AnimatePresence>
-                  {isNameExpanded && (
-                    <div className="flex">
-                      {["a", "r", "i", "r", "o", "M", "."].map(
-                        (letter, index) => (
-                          <motion.span
-                            key={index}
-                            initial={{ opacity: 0, x: -5 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 5 }}
-                            transition={{
-                              duration: 0.1,
-                              delay: index * 0.02,
-                              ease: "easeOut",
-                            }}
-                          >
-                            {letter}
-                          </motion.span>
-                        )
-                      )}
-                    </div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
+            <Logo
+              isExpanded={isNameExpanded}
+              onToggle={() => setIsNameExpanded(!isNameExpanded)}
+            />
 
             {/* Mobile Menu Button */}
             <button
               className="fixed top-8 right-4 z-50 md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
             >
               <div className="space-y-2">
                 <span
                   className={`block w-8 h-0.5 bg-[#fefeff] transition-transform ${
                     isMenuOpen ? "rotate-45 translate-y-2.5" : ""
                   }`}
-                ></span>
+                />
                 <span
                   className={`block w-8 h-0.5 bg-[#fefeff] transition-opacity ${
                     isMenuOpen ? "opacity-0" : ""
                   }`}
-                ></span>
+                />
                 <span
                   className={`block w-8 h-0.5 bg-[#fefeff] transition-transform ${
                     isMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
                   }`}
-                ></span>
+                />
               </div>
             </button>
 
-            {/* Mobile Menu */}
-            <AnimatePresence>
-              {isMenuOpen && (
-                <motion.div
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
-                  transition={{ type: "tween", duration: 0.3 }}
-                  className="fixed inset-0 bg-black z-40 md:hidden pt-24 px-8"
-                >
-                  {sections.map(({ id, title }) => (
-                    <div key={id} className="mb-6">
-                      <button
-                        onClick={() => scrollToSection(id)}
-                        className="text-2xl font-medium"
-                      >
-                        <span
-                          className={`${
-                            activeSection === id
-                              ? "text-[#fefeff]"
-                              : "text-[#969696]"
-                          }`}
-                        >
-                          {title}
-                        </span>
-                      </button>
-                    </div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <MobileMenu
+              isOpen={isMenuOpen}
+              onClose={() => setIsMenuOpen(false)}
+              activeSection={activeSection}
+              scrollToSection={scrollToSection}
+            />
 
             {/* Header */}
             <header className="p-4 md:p-8 pt-24 md:pt-8">
-              <div className="relative md:static mb-8">
-                <div
-                  className="absolute left-0 z-10 w-12 h-full bg-gradient-to-r from-black to-transparent pointer-events-none"
-                  style={{
-                    opacity: scrollPosition > 0 ? 1 : 0,
-                    transition: "opacity 0.3s ease",
-                  }}
-                ></div>
-                <div className="absolute right-0 z-10 w-12 h-full bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
-                <div
-                  ref={scrollContainerRef}
-                  className="flex gap-4 md:gap-8 justify-start md:justify-center text-sm overflow-x-auto scrollbar-hide"
-                  style={{
-                    scrollbarWidth: "none",
-                    msOverflowStyle: "none",
-                    WebkitOverflowScrolling: "touch",
-                    paddingLeft: "1rem",
-                    paddingRight: "1rem",
-                  }}
-                >
-                  {(
-                    [
-                      "anyone",
-                      "recruiters",
-                      "engineers",
-                      "product-managers",
-                    ] as AudienceType[]
-                  ).map((audience) => (
-                    <button
-                      key={audience}
-                      onClick={() => setSelectedAudience(audience)}
-                      className={`transition-colors whitespace-nowrap flex-shrink-0 ${
-                        selectedAudience === audience
-                          ? "text-[#fefeff] font-medium"
-                          : "text-[#969696] hover:text-[#fefeff]"
-                      }`}
-                    >
-                      {audienceContent[audience].title}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <AudienceSelector
+                selectedAudience={selectedAudience}
+                onAudienceChange={setSelectedAudience}
+              />
             </header>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:block fixed left-8 top-1/2 -translate-y-1/2 z-40">
-              {sections.map(({ id, title }) => (
-                <div key={id} className="mb-4 text-left">
-                  <button
-                    onClick={() => scrollToSection(id)}
-                    className="group flex items-center gap-2 text-sm"
-                  >
-                    <span
-                      className={`transition-all duration-300 ${
-                        activeSection === id
-                          ? "text-[#fefeff]"
-                          : "text-[#969696]"
-                      }`}
-                    >
-                      {title}
-                    </span>
-                  </button>
-                </div>
-              ))}
-            </nav>
+            <DesktopNavigation
+              activeSection={activeSection}
+              scrollToSection={scrollToSection}
+            />
 
             {/* Main Content */}
             <main className="flex-grow">
               <section id="intro" className="min-h-screen px-4 md:px-24">
                 <div className="pt-16 pb-8">
-                  {" "}
-                  {/* Adjusted padding-bottom to 8 */}
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -534,19 +677,17 @@ export default function Home() {
                         transition={{ duration: 0.5 }}
                       >
                         <p className="text-3xl md:text-6xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto">
-                          {audienceContent[selectedAudience].description}
+                          {currentAudienceContent.description}
                         </p>
                         <div className="flex gap-4 flex-wrap justify-center">
-                          {audienceContent[selectedAudience].skills.map(
-                            (skill, index) => (
-                              <span
-                                key={index}
-                                className="text-sm text-[#969696]"
-                              >
-                                {skill}
-                              </span>
-                            )
-                          )}
+                          {currentAudienceContent.skills.map((skill, index) => (
+                            <span
+                              key={index}
+                              className="text-sm text-[#969696]"
+                            >
+                              {skill}
+                            </span>
+                          ))}
                         </div>
 
                         {/* Scroll Down Arrow */}
@@ -554,13 +695,10 @@ export default function Home() {
                           className="mt-16 flex justify-center"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 0.6 }}
-                          transition={{
-                            delay: 1,
-                            duration: 1.5,
-                          }}
+                          transition={{ delay: 1, duration: 1.5 }}
                         >
                           <motion.div
-                            className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] border-t-[#fefeff]"
+                            className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] border-t-[#fefeff] cursor-pointer"
                             animate={{
                               y: [0, 10, 0],
                               opacity: [0.6, 0.3, 0.6],
@@ -571,7 +709,6 @@ export default function Home() {
                               ease: "easeInOut",
                             }}
                             onClick={() => scrollToSection("work")}
-                            style={{ cursor: "pointer" }}
                           />
                         </motion.div>
                       </motion.div>
@@ -592,9 +729,10 @@ export default function Home() {
                   <div className="grid gap-8 md:gap-16 max-w-2xl mx-auto">
                     {workProjects.map((project, index) => (
                       <motion.div
-                        key={index}
+                        key={`${project.title}-${index}`}
                         className="group"
                         whileHover={{ y: -10 }}
+                        transition={{ duration: 0.2 }}
                       >
                         <a
                           href={project.link}
@@ -611,7 +749,7 @@ export default function Home() {
                           <div className="flex flex-wrap gap-4">
                             {project.tags.map((tag, tagIndex) => (
                               <span
-                                key={tagIndex}
+                                key={`${tag}-${tagIndex}`}
                                 className="text-sm text-[#969696]"
                               >
                                 {tag}
@@ -644,6 +782,9 @@ export default function Home() {
                 className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
               >
                 <div className="max-w-5xl mx-auto">
+                  <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
+                    background.
+                  </h2>
                   <div className="max-w-2xl mx-auto">
                     <div className="mt-16">
                       <div className="relative w-40 h-40 flex-shrink-0 mb-8">
@@ -766,7 +907,7 @@ export default function Home() {
                 className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
               >
                 <div className="max-w-5xl mx-auto">
-                  <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-4xl mx-auto">
+                  <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
                     about.
                   </h2>
                   <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -832,13 +973,15 @@ export default function Home() {
               >
                 <div className="max-w-5xl mx-auto">
                   <div className="max-w-2xl mx-auto">
-                    <Image
-                      src="/Me.jpg"
-                      alt="Tariro M."
-                      width={500}
-                      height={300}
-                      className="mb-8 mx-auto"
-                    />
+                    <div className="max-w-2xl mx-auto flex justify-center">
+                      <Image
+                        src="/Me.jpg"
+                        alt="Tariro M."
+                        width={350}
+                        height={350} // Keep same ratio as image
+                        className="rounded-lg object-contain"
+                      />
+                    </div>
                     <p className="text-xl md:text-xl text-[#fefeff] underline text-center">
                       contact@tarirom.co.zw
                     </p>
@@ -905,5 +1048,3 @@ export default function Home() {
     </div>
   );
 }
-
-
