@@ -6,11 +6,12 @@ import Image from "next/image";
 import { FaBitcoin, FaWindows } from "react-icons/fa";
 import { FcLinux } from "react-icons/fc";
 import { TbCurrencyDollarZimbabwean, TbWorld } from "react-icons/tb";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLocationPin, FaXTwitter } from "react-icons/fa6";
 import Script from "next/script";
 import { BiLock, BiMobile } from "react-icons/bi";
 import { BsAndroid } from "react-icons/bs";
 import { MdBatchPrediction } from "react-icons/md";
+import { CiLocationArrow1 } from "react-icons/ci";
 
 // Constants
 const LOADING_DURATION = 1500; // Reduced from 2500ms
@@ -123,7 +124,7 @@ const workProjects: WorkProject[] = [
     description:
       "An online portfolio thoughtfully designed to showcase my skills, achievements, and projects. A digital representation of my journey, expertise, and passion in informatics, presented in a dynamic and user-friendly format.",
     tags: ["React", "Vite", "TypeScript", "Framer Motion", "Tailwind CSS"],
-    platforms: [{ icon: BiLock, color: "#4285F4" }],
+    platforms: [{ icon: FaLocationPin, color: "#4285F4" }],
     link: "#", // ← Same here
   },
 ];
