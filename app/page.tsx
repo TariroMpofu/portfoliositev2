@@ -808,7 +808,7 @@ export default function Home() {
                           NOW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HARARE
                         </p>
                         <p className="text-sm text-[#969696]">
-                          Supported national POS systems{" "}
+                          Developed and supported national POS systems{" "}
                           <a
                             href="https://touchafrica.biz/"
                             target="_blank"
@@ -817,11 +817,7 @@ export default function Home() {
                           >
                             (GAAP, Unity, iVend)
                           </a>
-                          with a focus on technical deployments, automation, and
-                          data insights. Delivered system integrations, built
-                          compliance tools in C#, and enabled analytics for
-                          sales, inventory, and speed-of-service metrics across
-                          major retail and QSR clients like KFC and Simbisa.
+                          for major retail and QSR clients (e.g., KFC, Simbisa) by building compliance tools in C#, automating routine processes, and delivering analytics that improved sales tracking, inventory accuracy, and speed-of-service insights.
                         </p>
                       </div>
                     </div>
@@ -1049,3 +1045,4 @@ export default function Home() {
     </div>
   );
 }
+
