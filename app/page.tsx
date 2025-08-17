@@ -58,7 +58,7 @@ const workProjects: WorkProject[] = [
   {
     title: "Relay",
     description:
-      "I'm building a Flutter-based CRM companion that leverages Gmail and Zoho APIs to streamline follow-ups, automate handovers, and enhance team coordination within the Touch Africa Team.",
+      "Designed and developed a Flutter-based CRM companion app for the Touch Africa team, integrating Gmail and Zoho APIs to centralize communication, automate handovers, and streamline follow-ups. Enhanced team coordination by enabling structured tracking of client interactions and reducing manual effort in daily workflows.",
     tags: ["DART", "Gmail API", "Zoho API"],
     link: "https://www.linkedin.com/feed/update/urn:li:activity:7359189121493364736/",
     platforms: [{ icon: BiMobile, color: "#00A4EF" }, { icon: BsAndroid }],
@@ -66,7 +66,7 @@ const workProjects: WorkProject[] = [
   {
     title: "Churn Prediction Model",
     description:
-      "I wrote and published a paper on customer attrition, which merits special attention by mobile telecom service providers. I then designed predictive telecom churn analysis model, specifically for the Zimbabwean market, using a Random Forest algorithm that has a 87% accuracy. Finally I developed a user-friendly flask web application for seamless model deployment.",
+      "Authored and published research on customer attrition in the Zimbabwean telecom sector, then designed a predictive churn analysis model using Random Forest with 87% accuracy. Deployed the model via a user-friendly Flask web application, enabling seamless use by non-technical stakeholders.",
     tags: ["Python", "django", "HTML", "CSS", "Heroku"],
     link: "https://drive.google.com/drive/folders/1FY6Z3xyQW2narXeCFmuPvZSm0H1BgU5K?usp=drive_link",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
@@ -74,7 +74,7 @@ const workProjects: WorkProject[] = [
   {
     title: "FDMS Buyer Details Compliance",
     description:
-      "Integrated mandatory buyer detail capture into Ivend, UNITY, and QSR POS to meet ZIMRA's VAT Act Section 20(4) under Public Notice 30 of 2025. Coordinated fiscal device upgrades and validated compliance via the FDMS Portal, ensuring clients met the 31 May deadline and maintained tax claim eligibility.",
+      "Integrated mandatory buyer detail capture into iVend, Unity, and QSR POS systems to ensure compliance with ZIMRA’s VAT Act Section 20(4) (Public Notice 30 of 2025). Coordinated fiscal device upgrades and validated compliance via the FDMS Portal, enabling clients to meet the 31 May deadline and maintain VAT claim eligibility.",
     tags: ["C#"],
     link: "https://drive.google.com/file/d/1Yd9fqgvYOKG1AgLCSjD20p1eMb3pExHb/view?usp=sharing",
     platforms: [{ icon: TbCurrencyDollarZimbabwean, color: "#2E7D32" }],
@@ -82,7 +82,7 @@ const workProjects: WorkProject[] = [
   {
     title: "Zimbabwe Mental Health Survey Analysis",
     description:
-      "With invaluable input and support from Mr. Butholenkosi Moyo, I created an insightful Power BI dashboard that analyzes a Mental Health Survey Dataset collected by Data Science Zimbabwe during one of their recent annual awareness drives. It offers clear visualizations and insights to enhance understanding of the underlying mental health dynamics.",
+      "Developed an interactive Power BI dashboard in collaboration with Mr. Butholenkosi Moyo to analyze a Mental Health Survey dataset from Data Science Zimbabwe’s annual awareness drive. Delivered clear visualizations and actionable insights to improve understanding of mental health dynamics.",
     tags: ["Python", "Power BI", "Excel"],
     link: "https://drive.google.com/file/d/1jfYG17LkdzakENnvtOPIZbjtui5qE6dO/view?usp=drive_link",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
@@ -90,7 +90,7 @@ const workProjects: WorkProject[] = [
   {
     title: "SAP Sales Analysis Dashboard (Sample)",
     description:
-      "As part of Touch's inaugural analytics launch, I developed this interactive sales analytics dashboard in SAP Business One as a cornerstone proof-of-concept—demonstrating how strategic data visualization transforms executive decision-making, particularly for businesses currently using platforms like iVend and exploring SAP as a next step. This sample highlights how SAP can consolidate and visualize critical sales data across regions, employees, customer groups, and warehouses. Executives can easily track top-selling items, profit margins, customer trends, and stock movement. Filters and dynamic charts empower leadership to drill into specific time periods or product lines—unlocking actionable insights for growth, margin protection, and strategic planning.",
+      "Developed an interactive sales analytics dashboard in SAP Business One as part of Touch’s inaugural analytics launch, demonstrating how seamlessly integrating SAP with iVend connects store operations to financial administration. Consolidated data across regions, employees, customer groups, and warehouses, with dynamic filters and visualizations that enabled executives to track top-selling items, profit margins, customer trends, and stock movement—unlocking actionable insights for growth, margin protection, and strategic planning.",
     tags: ["SAP Business One", "Power BI (optional integration)"],
     link: "https://drive.google.com/file/d/1mW6f4qu-vXOqpruGjqNHdG_kX2c2Xw1t/view?usp=sharing",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
@@ -98,7 +98,7 @@ const workProjects: WorkProject[] = [
   {
     title: "Kwizi",
     description:
-      "To try and enhance Zimbabwe's digital presence, I've dedicated my free time to creating Kwizi. It is an engaging web application designed to test your knowledge of Zimbabwe's rich history and culture. It aims to revive and celebrate often overlooked trivia, providing an exciting digital platform for you to challenge your expertise in various categories of Zimbabwean general knowledge.",
+      "Created Kwizi, an engaging web application that tests knowledge of Zimbabwe’s history and culture. Designed as a passion project to strengthen Zimbabwe’s digital presence, it revives overlooked trivia through interactive quizzes across multiple categories—providing users with an exciting platform to celebrate and learn about national heritage.",
     tags: ["HTML", "Bootstrap", "CSS", "Javascript", "Supabase"],
     link: "https://drive.google.com/drive/folders/1t26L4r-7iPTL7l9LrIrWK4Kw2Z1UvwoI?usp=sharing",
     platforms: [{ icon: TbWorld, color: "#4285F4" }],
@@ -106,7 +106,7 @@ const workProjects: WorkProject[] = [
   {
     title: "Islamic Knowledge Hub",
     description:
-      "I've created a web application that serves as a valuable resource for individuals eager to deepen their understanding of Islamic terminology and spirituality. Initially developed for a specific client, I am now attempting to expand it to cater to a diverse audience, including Islamic Studies Students, Spiritual Seekers, and Language Enthusiasts.",
+      "Developed a web application as a resource for exploring Islamic terminology and spirituality, initially for a specific client and now expanding to a broader audience including Islamic Studies students, spiritual seekers, and language enthusiasts. Designed to provide accessible, structured learning while supporting deeper engagement with religious and linguistic concepts.",
     tags: ["HTML", "Bootstrap", "CSS", "Javascript", "Supabase"],
     link: "https://drive.google.com/file/d/1pfjt9q6vzFPYwapTXkNIlbF8zNHzROBG/view?usp=sharing",
     platforms: [{ icon: TbWorld, color: "#4285F4" }],
@@ -114,7 +114,7 @@ const workProjects: WorkProject[] = [
   {
     title: "Asset Manager",
     description:
-      "I developed a VB.Net-SQL desktop platform meticulously cataloging I.T. assets and streamlining clearance management for Cairns IT Department, intended to replace their outdated paper filing procedure.",
+      "Designed and developed a VB.Net-SQL desktop platform for Cairns IT Department to meticulously catalog IT assets and automate clearance management, replacing an inefficient paper-based filing system. Implemented structured databases, intuitive forms, and reporting features to track asset lifecycle, monitor approvals, and generate audit-ready records—enhancing operational efficiency, reducing administrative workload, and improving accuracy in asset management.",
     tags: ["Visual Basic", "SQL"],
     platforms: [{ icon: BiLock, color: "#4285F4" }],
     link: "#", // ← Add the link here, replace '#' with actual URL if available
