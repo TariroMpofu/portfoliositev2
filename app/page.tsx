@@ -788,7 +788,12 @@ export default function Home() {
                   </h2>
                   <div className="max-w-2xl mx-auto">
                     <div className="mt-16">
-                      <div className="relative w-40 h-40 flex-shrink-0 mb-8">
+                      <a
+                        href="https://touchafrica.biz/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative w-40 h-40 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
+                      >
                         <Image
                           src="/TOUCH-AFRICA.png"
                           alt="TA Logo"
@@ -796,7 +801,7 @@ export default function Home() {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           style={{ objectFit: "contain" }}
                         />
-                      </div>
+                      </a>
                       <div className="space-y-4">
                         <p className="font-mono text-sm text-[#969696]">
                           TOUCH AFRICA
@@ -817,14 +822,23 @@ export default function Home() {
                           >
                             (GAAP, Unity, iVend)
                           </a>
-                          for major retail and QSR clients (e.g., KFC, Simbisa) by building compliance tools in C#, automating routine processes, and delivering analytics that improved sales tracking, inventory accuracy, and speed-of-service insights.
+                          for major retail and QSR clients (e.g., KFC, Simbisa)
+                          by building compliance tools in C#, automating routine
+                          processes, and delivering analytics that improved
+                          sales tracking, inventory accuracy, and
+                          speed-of-service insights.
                         </p>
                       </div>
                     </div>
                     <br />
                     <br />
                     <br />
-                    <div className="relative w-48 h-40 flex-shrink-0 mb-4">
+                    <a
+                      href="https://ecocashholdings.co.zw/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative w-48 h-40 flex-shrink-0 mb-4 block hover:opacity-80 transition-opacity cursor-pointer"
+                    >
                       <Image
                         src="/Ecocash logo.png"
                         alt="Ecocash Holdings Logo"
@@ -832,7 +846,7 @@ export default function Home() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         style={{ objectFit: "contain" }}
                       />
-                    </div>
+                    </a>
                     <div className="space-y-4">
                       <p className="font-mono text-sm text-[#969696]">
                         EcoCash Holdings
@@ -844,21 +858,26 @@ export default function Home() {
                         2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HYBRID
                       </p>
                       <p className="text-sm text-[#969696]">
-                        Built dashboards in an Azure environment to track login
-                        issues, segment customers, and deliver personalized
-                        insights across multiple strategic business units.
-                        Developed daily performance dashboards for the insurance
-                        division and supported data-driven decision-making
-                        through a unified 360° customer view. Enhanced
-                        engagement strategies and contributed to improved
-                        customer satisfaction and retention.
+                        Developed Power BI dashboards within an Azure
+                        environment to track login issues, segment customers,
+                        and deliver personalized insights across multiple
+                        strategic business units. Created daily performance
+                        dashboards for the insurance division and enabled
+                        data-driven decision-making via a unified 360° customer
+                        view, enhancing engagement strategies and driving
+                        improved customer satisfaction and retention.
                       </p>
                     </div>
                     <br />
                     <br />
                     <br />
                     <div className="mt-16">
-                      <div className="relative w-24 h-24 flex-shrink-0 mb-8">
+                      <a
+                        href="https://cairnsfoods.co.zw/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative w-24 h-24 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
+                      >
                         <Image
                           src="/Cairns-Food.png"
                           alt="Cairns Foods Logo"
@@ -866,7 +885,7 @@ export default function Home() {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           style={{ objectFit: "contain" }}
                         />
-                      </div>
+                      </a>
                       <div className="space-y-4">
                         <p className="font-mono text-sm text-[#969696]">
                           Cairns Holdings Limited
@@ -879,18 +898,19 @@ export default function Home() {
                         </p>
                         <p className="text-sm text-[#969696]">
                           Provided remote IT support to branches nationwide,
-                          resolving technical issues and ensuring operational
-                          continuity. Monitored and maintained computer systems
-                          and networks across multiple sites. Installed and
-                          configured hardware and software to support employee
-                          productivity. Maintained the company asset register
-                          and contributed to troubleshooting and maintenance
-                          processes. Supported Windows Server administration and
-                          implemented preventive maintenance strategies.
-                          Prepared monthly reports covering responsibilities
-                          such as Active Directory, Sage ERP, database
-                          management, disaster recovery, antivirus, Office 365,
-                          and IT procurement.
+                          resolving technical issues and ensuring uninterrupted
+                          operations across Sage 1000, internal warehouse
+                          tracking systems, and mobile vendor applications.
+                          Monitored and maintained computer systems, networks,
+                          and Windows Server environments, including domain and
+                          Office 365 email services, while installing and
+                          configuring hardware and software to optimize employee
+                          productivity. Maintained the company asset register,
+                          supported database management, Active Directory, and
+                          ERP processes, and implemented preventive maintenance
+                          and disaster recovery strategies—enhancing operational
+                          efficiency, reducing downtime, and strengthening IT
+                          governance.
                         </p>
                       </div>
                     </div>
@@ -1045,4 +1065,3 @@ export default function Home() {
     </div>
   );
 }
-
