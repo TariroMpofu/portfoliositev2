@@ -852,7 +852,7 @@ export default function Home() {
                         EcoCash Holdings
                       </p>
                       <h3 className="text-4xl font-medium text-[#fefeff]">
-                        Cassava Advanced Data Analytics, Data Scientist Intern
+                        Cassava Advanced Data Analytics, Associate Data Scientist (Internship)
                       </h3>
                       <p className="text-sm text-[#fefeff]">
                         2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HYBRID
@@ -891,7 +891,7 @@ export default function Home() {
                           Cairns Holdings Limited
                         </p>
                         <h3 className="text-4xl font-medium text-[#fefeff]">
-                          ICT Intern
+                          IT Infrastructure Support Specialist
                         </h3>
                         <p className="text-sm text-[#fefeff]">
                           2021 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HARARE
@@ -1065,4 +1065,5 @@ export default function Home() {
     </div>
   );
 }
+
 
