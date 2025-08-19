@@ -100,7 +100,7 @@ const workProjects: WorkProject[] = [
     description:
       "Created Kwizi, an engaging web application that tests knowledge of Zimbabwe’s history and culture. Designed as a passion project to strengthen Zimbabwe’s digital presence, it revives overlooked trivia through interactive quizzes across multiple categories—providing users with an exciting platform to celebrate and learn about national heritage.",
     tags: ["HTML", "Bootstrap", "CSS", "Javascript", "Supabase"],
-    link: "https://kwizi.netlify.app/",
+    link: "https://drive.google.com/drive/folders/1t26L4r-7iPTL7l9LrIrWK4Kw2Z1UvwoI?usp=sharing",
     platforms: [{ icon: TbWorld, color: "#4285F4" }],
   },
   {
@@ -796,7 +796,7 @@ export default function Home() {
                       >
                         <Image
                           src="/TOUCH-AFRICA.png"
-                          alt="TA Logo"
+                          alt="Touch Africa Logo"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           style={{ objectFit: "contain" }}
@@ -812,75 +812,133 @@ export default function Home() {
                         <p className="text-sm text-[#fefeff]">
                           NOW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HARARE
                         </p>
-                        <p className="text-sm text-[#969696]">
-                          Developed and supported national POS systems{" "}
+                        <p className="text-sm text-[#969696] leading-relaxed">
+                          Installed, configured, and customized national POS
+                          systems{" "}
                           <a
                             href="https://touchafrica.biz/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#969696] hover:text-[#fefeff] transition-colors"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
                           >
                             (GAAP, Unity, iVend)
+                          </a>{" "}
+                          for major retail, QSR, and convenience store clients
+                          including{" "}
+                          <a
+                            href="https://www.samlevysvillage.com/store/adidas-ideal-range/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Adidas
                           </a>
-                          for major retail and QSR clients (e.g., KFC, Simbisa)
-                          by building compliance tools in C#, automating routine
-                          processes, and delivering analytics that improved
-                          sales tracking, inventory accuracy, and
-                          speed-of-service insights.
+                          ,{" "}
+                          <a
+                            href="https://www.kfc.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            KFC
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.simbisabrands.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Simbisa Brands
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://buffalobicycles.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Buffalo Bicycles
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://liquorsupplies.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Liquor Supplies
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://zw.totalenergies.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Total
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://pumaenergy.com/country/zimbabwe/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Puma
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.zuvapetroleum.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Zuva
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.redan.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Redan
+                          </a>
+                          , and{" "}
+                          <a
+                            href="https://www.linkedin.com/company/tsebo-zim/?originalSubdomain=zw"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Tsebo
+                          </a>
+                          . Specialized in fiscal compliance integrations, built
+                          custom automation tools in C#, and delivered real-time
+                          analytics dashboards that transformed raw
+                          transactional data into actionable business
+                          intelligence for C-suite decision-making. Enhanced
+                          store operations through advanced inventory
+                          optimization, sales forecasting models, loss
+                          prevention analytics, and performance benchmarking
+                          across multi-location deployments—driving improved
+                          profit margins and operational efficiency.
                         </p>
                       </div>
                     </div>
-                    <br />
-                    <br />
-                    <br />
-                    <a
-                      href="https://ecocashholdings.co.zw/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative w-48 h-40 flex-shrink-0 mb-4 block hover:opacity-80 transition-opacity cursor-pointer"
-                    >
-                      <Image
-                        src="/Ecocash logo.png"
-                        alt="Ecocash Holdings Logo"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        style={{ objectFit: "contain" }}
-                      />
-                    </a>
-                    <div className="space-y-4">
-                      <p className="font-mono text-sm text-[#969696]">
-                        EcoCash Holdings
-                      </p>
-                      <h3 className="text-4xl font-medium text-[#fefeff]">
-                        Cassava Advanced Data Analytics, Associate Data Scientist (Internship)
-                      </h3>
-                      <p className="text-sm text-[#fefeff]">
-                        2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HYBRID
-                      </p>
-                      <p className="text-sm text-[#969696]">
-                        Developed Power BI dashboards within an Azure
-                        environment to track login issues, segment customers,
-                        and deliver personalized insights across multiple
-                        strategic business units. Created daily performance
-                        dashboards for the insurance division and enabled
-                        data-driven decision-making via a unified 360° customer
-                        view, enhancing engagement strategies and driving
-                        improved customer satisfaction and retention.
-                      </p>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
+
+                    {/* EcoCash Holdings Position */}
                     <div className="mt-16">
                       <a
-                        href="https://cairnsfoods.co.zw/"
+                        href="https://ecocashholdings.co.zw/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative w-24 h-24 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
+                        className="relative w-48 h-40 flex-shrink-0 mb-4 block hover:opacity-80 transition-opacity cursor-pointer"
                       >
                         <Image
-                          src="/Cairns-Food.png"
-                          alt="Cairns Foods Logo"
+                          src="/Ecocash logo.png"
+                          alt="Ecocash Holdings Logo"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           style={{ objectFit: "contain" }}
@@ -888,30 +946,71 @@ export default function Home() {
                       </a>
                       <div className="space-y-4">
                         <p className="font-mono text-sm text-[#969696]">
-                          Cairns Holdings Limited
+                          EcoCash Holdings
                         </p>
                         <h3 className="text-4xl font-medium text-[#fefeff]">
-                          IT Infrastructure Support Specialist
+                          Cassava Advanced Data Analytics, Associate Data Scientist (Internship)
                         </h3>
                         <p className="text-sm text-[#fefeff]">
-                          2021 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HARARE
+                          2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HYBRID
                         </p>
                         <p className="text-sm text-[#969696]">
-                          Provided remote IT support to branches nationwide,
-                          resolving technical issues and ensuring uninterrupted
-                          operations across Sage 1000, internal warehouse
-                          tracking systems, and mobile vendor applications.
-                          Monitored and maintained computer systems, networks,
-                          and Windows Server environments, including domain and
-                          Office 365 email services, while installing and
-                          configuring hardware and software to optimize employee
-                          productivity. Maintained the company asset register,
-                          supported database management, Active Directory, and
-                          ERP processes, and implemented preventive maintenance
-                          and disaster recovery strategies—enhancing operational
-                          efficiency, reducing downtime, and strengthening IT
-                          governance.
+                          Developed Power BI dashboards within an Azure
+                          environment to track login issues, segment customers,
+                          and deliver personalized insights across multiple
+                          strategic business units. Created daily performance
+                          dashboards for the insurance division and enabled
+                          data-driven decision-making via a unified 360°
+                          customer view, enhancing engagement strategies and
+                          driving improved customer satisfaction and retention.
                         </p>
+                      </div>
+                      <br />
+                      <br />
+                      <br />
+                      <div className="mt-16">
+                        <a
+                          href="https://cairnsfoods.co.zw/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative w-24 h-24 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
+                        >
+                          <Image
+                            src="/Cairns-Food.png"
+                            alt="Cairns Foods Logo"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            style={{ objectFit: "contain" }}
+                          />
+                        </a>
+                        <div className="space-y-4">
+                          <p className="font-mono text-sm text-[#969696]">
+                            Cairns Holdings Limited
+                          </p>
+                          <h3 className="text-4xl font-medium text-[#fefeff]">
+                            IT Infrastructure Support Specialist
+                          </h3>
+                          <p className="text-sm text-[#fefeff]">
+                            2021 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HARARE
+                          </p>
+                          <p className="text-sm text-[#969696]">
+                            Provided remote IT support to branches nationwide,
+                            resolving technical issues and ensuring
+                            uninterrupted operations across Sage 1000, internal
+                            warehouse tracking systems, and mobile vendor
+                            applications. Monitored and maintained computer
+                            systems, networks, and Windows Server environments,
+                            including domain and Office 365 email services,
+                            while installing and configuring hardware and
+                            software to optimize employee productivity.
+                            Maintained the company asset register, supported
+                            database management, Active Directory, and ERP
+                            processes, and implemented preventive maintenance
+                            and disaster recovery strategies—enhancing
+                            operational efficiency, reducing downtime, and
+                            strengthening IT governance.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1065,5 +1164,3 @@ export default function Home() {
     </div>
   );
 }
-
-
