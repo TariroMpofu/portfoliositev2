@@ -155,7 +155,7 @@ const audienceContent: Record<AudienceType, AudienceContent> = {
     skills: [
       <a
         key="resume-recruiters"
-        href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=sharing"
+        href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=drive_link"
         download
         className="hover:text-[#fefeff] transition-colors"
       >
@@ -183,7 +183,7 @@ const audienceContent: Record<AudienceType, AudienceContent> = {
     skills: [
       <a
         key="resume-engineers"
-        href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=sharing"
+        href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=drive_link"
         download
         className="hover:text-[#fefeff] transition-colors"
       >
@@ -198,7 +198,7 @@ const audienceContent: Record<AudienceType, AudienceContent> = {
     skills: [
       <a
         key="resume-pm"
-        href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=sharing"
+        href="https://drive.google.com/file/d/1du_GGes49oDgrJPLHi6PJRsrZR0Vhq2M/view?usp=drive_link"
         download
         className="hover:text-[#fefeff] transition-colors"
       >
@@ -1164,4 +1164,5 @@ export default function Home() {
     </div>
   );
 }
+
 
