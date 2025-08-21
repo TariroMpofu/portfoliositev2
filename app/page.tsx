@@ -915,12 +915,12 @@ export default function Home() {
                             Tsebo
                           </a>
                           . Specialized in fiscal compliance integrations, built
-                          custom automation tools in C#, and delivered real-time
+                          custom automation tools, and delivered real-time
                           analytics dashboards that transformed raw
                           transactional data into actionable business
                           intelligence for C-suite decision-making. Enhanced
                           store operations through advanced inventory
-                          optimization, sales forecasting models, loss
+                          optimization, sales forecasting dashboards, allowing loss
                           prevention analytics, and performance benchmarking
                           across multi-location deployments—driving improved
                           profit margins and operational efficiency.
@@ -1164,3 +1164,4 @@ export default function Home() {
     </div>
   );
 }
+
