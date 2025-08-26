@@ -1091,7 +1091,7 @@ export default function Home() {
                   <div className="max-w-2xl mx-auto">
                     <div className="max-w-2xl mx-auto flex justify-center">
                       <Image
-                        src="/Me.jpg"
+                        src="/IMG_9141.JPG"
                         alt="Tariro M."
                         width={350}
                         height={350} // Keep same ratio as image
@@ -1164,6 +1164,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
