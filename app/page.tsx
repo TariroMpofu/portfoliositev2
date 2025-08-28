@@ -100,7 +100,7 @@ const workProjects: WorkProject[] = [
     description:
       "Created Kwizi, an engaging web application that tests knowledge of Zimbabwe’s history and culture. Designed as a passion project to strengthen Zimbabwe’s digital presence, it revives overlooked trivia through interactive quizzes across multiple categories—providing users with an exciting platform to celebrate and learn about national heritage.",
     tags: ["HTML", "Bootstrap", "CSS", "Javascript", "Supabase"],
-    link: "https://drive.google.com/drive/folders/1t26L4r-7iPTL7l9LrIrWK4Kw2Z1UvwoI?usp=sharing",
+    link: "https://kwizi.netlify.app/",
     platforms: [{ icon: TbWorld, color: "#4285F4" }],
   },
   {
@@ -1164,6 +1164,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
