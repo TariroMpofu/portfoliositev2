@@ -12,7 +12,6 @@ import { BiLock, BiMobile } from "react-icons/bi";
 import { BsAndroid } from "react-icons/bs";
 import { MdBatchPrediction } from "react-icons/md";
 import { CiLocationArrow1 } from "react-icons/ci";
-import Head from "next/head";
 
 // Constants
 const LOADING_DURATION = 1500; // Reduced from 2500ms
@@ -75,7 +74,7 @@ const workProjects: WorkProject[] = [
   {
     title: "FDMS Buyer Details Compliance",
     description:
-      "Integrated mandatory buyer detail capture into iVend, Unity, and QSR POS systems to ensure compliance with ZIMRA's VAT Act Section 20(4) (Public Notice 30 of 2025). Coordinated fiscal device upgrades and validated compliance via the FDMS Portal, enabling clients to meet the 31 May deadline and maintain VAT claim eligibility.",
+      "Integrated mandatory buyer detail capture into iVend, Unity, and QSR POS systems to ensure compliance with ZIMRA’s VAT Act Section 20(4) (Public Notice 30 of 2025). Coordinated fiscal device upgrades and validated compliance via the FDMS Portal, enabling clients to meet the 31 May deadline and maintain VAT claim eligibility.",
     tags: ["C#"],
     link: "https://drive.google.com/file/d/1Yd9fqgvYOKG1AgLCSjD20p1eMb3pExHb/view?usp=sharing",
     platforms: [{ icon: TbCurrencyDollarZimbabwean, color: "#2E7D32" }],
@@ -83,7 +82,7 @@ const workProjects: WorkProject[] = [
   {
     title: "Zimbabwe Mental Health Survey Analysis",
     description:
-      "Developed an interactive Power BI dashboard in collaboration with Mr. Butholenkosi Moyo to analyze a Mental Health Survey dataset from Data Science Zimbabwe's annual awareness drive. Delivered clear visualizations and actionable insights to improve understanding of mental health dynamics.",
+      "Developed an interactive Power BI dashboard in collaboration with Mr. Butholenkosi Moyo to analyze a Mental Health Survey dataset from Data Science Zimbabwe’s annual awareness drive. Delivered clear visualizations and actionable insights to improve understanding of mental health dynamics.",
     tags: ["Python", "Power BI", "Excel"],
     link: "https://drive.google.com/file/d/1jfYG17LkdzakENnvtOPIZbjtui5qE6dO/view?usp=drive_link",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
@@ -91,7 +90,7 @@ const workProjects: WorkProject[] = [
   {
     title: "SAP Sales Analysis Dashboard (Sample)",
     description:
-      "Developed an interactive sales analytics dashboard in SAP Business One as part of Touch's inaugural analytics launch, demonstrating how seamlessly integrating SAP with iVend connects store operations to financial administration. Consolidated data across regions, employees, customer groups, and warehouses, with dynamic filters and visualizations that enabled executives to track top-selling items, profit margins, customer trends, and stock movement—unlocking actionable insights for growth, margin protection, and strategic planning.",
+      "Developed an interactive sales analytics dashboard in SAP Business One as part of Touch’s inaugural analytics launch, demonstrating how seamlessly integrating SAP with iVend connects store operations to financial administration. Consolidated data across regions, employees, customer groups, and warehouses, with dynamic filters and visualizations that enabled executives to track top-selling items, profit margins, customer trends, and stock movement—unlocking actionable insights for growth, margin protection, and strategic planning.",
     tags: ["SAP Business One", "Power BI (optional integration)"],
     link: "https://drive.google.com/file/d/1mW6f4qu-vXOqpruGjqNHdG_kX2c2Xw1t/view?usp=sharing",
     platforms: [{ icon: MdBatchPrediction, color: "#4285F4" }],
@@ -99,8 +98,9 @@ const workProjects: WorkProject[] = [
   {
     title: "Kwizi",
     description:
-      "Created Kwizi, an engaging web application that tests knowledge of Zimbabwe's history and culture. Designed as a passion project to strengthen Zimbabwe's digital presence, it revives overlooked trivia through interactive quizzes across multiple categories—providing users with an exciting platform to celebrate and learn about national heritage.",
+      "Created Kwizi, an engaging web application that tests knowledge of Zimbabwe’s history and culture. Designed as a passion project to strengthen Zimbabwe’s digital presence, it revives overlooked trivia through interactive quizzes across multiple categories—providing users with an exciting platform to celebrate and learn about national heritage.",
     tags: ["HTML", "Bootstrap", "CSS", "Javascript", "Supabase"],
+    link: "https://drive.google.com/drive/folders/1t26L4r-7iPTL7l9LrIrWK4Kw2Z1UvwoI?usp=sharing",
     link: "https://kwizi.netlify.app/",
     platforms: [{ icon: TbWorld, color: "#4285F4" }],
   },
@@ -134,14 +134,14 @@ const audienceContent: Record<AudienceType, AudienceContent> = {
   anyone: {
     title: "For Anyone",
     description:
-      "I'm Tariro Mpofu (also known as Tariro M.), a software developer based in Harare, Zimbabwe who loves creating meaningful digital experiences, with a focus on tech, minimalism, and where they intersect.",
+      "I'm a developer who loves creating meaningful digital experiences, with a focus on tech, minimalism, and where they intersect.",
     skills: [],
   },
   recruiters: {
     title: "Recruiters",
     description: (
       <>
-        I'm Tariro Mpofu, a software developer with over 4 years of experience building software
+        Software developer with over 4 years of experience building software
         solutions. My expertise includes{" "}
         <span className="hover:text-[#3776AB] transition-colors cursor-default">
           Python
@@ -168,7 +168,7 @@ const audienceContent: Record<AudienceType, AudienceContent> = {
     title: "Engineers",
     description: (
       <>
-        I'm Tariro Mpofu, driven by technology, innovation, and open source. Explore my technical
+        Driven by technology, innovation, and open source. Explore my technical
         deep dives and projects over at my{" "}
         <a
           href="https://github.com/TariroMpofu"
@@ -195,7 +195,7 @@ const audienceContent: Record<AudienceType, AudienceContent> = {
   "product-managers": {
     title: "Product Managers",
     description:
-      "I'm Tariro Mpofu, bringing technical expertise to product development, bridging the gap between business objectives and technical execution.",
+      "I bring technical expertise to product development, bridging the gap between business objectives and technical execution.",
     skills: [
       <a
         key="resume-pm"
@@ -583,648 +583,587 @@ export default function Home() {
   );
 
   return (
-    <>
-      <Head>
-        <title>Tariro Mpofu - Software Developer & Technical Consultant</title>
-        <meta name="description" content="Tariro Mpofu is a software developer and technical consultant based in Harare, Zimbabwe. Specializing in POS systems, data analytics, and custom software solutions." />
-        <meta name="keywords" content="Tariro Mpofu, Tariro, Tari, Tariro M, tarirom, tariro mpofu, Zimbabwe developer, software developer, technical consultant, POS systems, data analytics, Flutter developer, Python developer" />
-        <meta name="author" content="Tariro Mpofu" />
-        
-        {/* Open Graph tags for social media */}
-        <meta property="og:title" content="Tariro Mpofu - Software Developer & Technical Consultant" />
-        <meta property="og:description" content="Software developer with expertise in POS systems, data analytics, and custom software solutions." />
-        <meta property="og:image" content="https://tarirom.co.zw/IMG_9141.JPG" />
-        <meta property="og:url" content="https://tarirom.co.zw" />
-        <meta property="og:type" content="website" />
-        
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tariro Mpofu - Software Developer" />
-        <meta name="twitter:description" content="Software developer with expertise in POS systems, data analytics, and custom software solutions." />
-        <meta name="twitter:image" content="https://tarirom.co.zw/IMG_9141.JPG" />
-        
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Tariro Mpofu",
-              "url": "https://tarirom.co.zw",
-              "image": "https://tarirom.co.zw/IMG_9141.JPG",
-              "jobTitle": "Software Developer & Technical Consultant",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Touch Africa"
-              },
-              "sameAs": [
-                "https://www.linkedin.com/in/tariro-m-772554231/",
-                "https://github.com/TariroMpofu",
-                "https://x.com/thaquietknight"
-              ],
-              "knowsAbout": [
-                "Software Development",
-                "POS Systems",
-                "Data Analytics",
-                "Python",
-                "JavaScript",
-                "Flutter",
-                "CRM Systems"
-              ],
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Harare",
-                "addressCountry": "ZW"
-              }
-            })
-          }}
-        />
-      </Head>
+    <div
+      className={`${spaceGrotesk.className} bg-black text-[#fefeff] flex flex-col min-h-screen`}
+    >
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-CZNM8V2BK5"
+      />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-CZNM8V2BK5');
+        `}
+      </Script>
 
-      <div
-        className={`${spaceGrotesk.className} bg-black text-[#fefeff] flex flex-col min-h-screen`}
-      >
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-CZNM8V2BK5"
-        />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-CZNM8V2BK5');
-          `}
-        </Script>
+      <AnimatePresence mode="wait">
+        {loading ? (
+          <LoadingScreen />
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex-grow"
+          >
+            <Logo
+              isExpanded={isNameExpanded}
+              onToggle={() => setIsNameExpanded(!isNameExpanded)}
+            />
 
-        <AnimatePresence mode="wait">
-          {loading ? (
-            <LoadingScreen />
-          ) : (
-            <motion.div
-              key="content"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex-grow"
+            {/* Mobile Menu Button */}
+            <button
+              className="fixed top-8 right-4 z-50 md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
             >
-              <Logo
-                isExpanded={isNameExpanded}
-                onToggle={() => setIsNameExpanded(!isNameExpanded)}
-              />
-
-              {/* Mobile Menu Button */}
-              <button
-                className="fixed top-8 right-4 z-50 md:hidden"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                <div className="space-y-2">
-                  <span
-                    className={`block w-8 h-0.5 bg-[#fefeff] transition-transform ${
-                      isMenuOpen ? "rotate-45 translate-y-2.5" : ""
-                    }`}
-                  />
-                  <span
-                    className={`block w-8 h-0.5 bg-[#fefeff] transition-opacity ${
-                      isMenuOpen ? "opacity-0" : ""
-                    }`}
-                  />
-                  <span
-                    className={`block w-8 h-0.5 bg-[#fefeff] transition-transform ${
-                      isMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
-                    }`}
-                  />
-                </div>
-              </button>
-
-              <MobileMenu
-                isOpen={isMenuOpen}
-                onClose={() => setIsMenuOpen(false)}
-                activeSection={activeSection}
-                scrollToSection={scrollToSection}
-              />
-
-              {/* Header */}
-              <header className="p-4 md:p-8 pt-24 md:pt-8">
-                <AudienceSelector
-                  selectedAudience={selectedAudience}
-                  onAudienceChange={setSelectedAudience}
+              <div className="space-y-2">
+                <span
+                  className={`block w-8 h-0.5 bg-[#fefeff] transition-transform ${
+                    isMenuOpen ? "rotate-45 translate-y-2.5" : ""
+                  }`}
                 />
-              </header>
+                <span
+                  className={`block w-8 h-0.5 bg-[#fefeff] transition-opacity ${
+                    isMenuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-8 h-0.5 bg-[#fefeff] transition-transform ${
+                    isMenuOpen ? "-rotate-45 -translate-y-2.5" : ""
+                  }`}
+                />
+              </div>
+            </button>
 
-              <DesktopNavigation
-                activeSection={activeSection}
-                scrollToSection={scrollToSection}
+            <MobileMenu
+              isOpen={isMenuOpen}
+              onClose={() => setIsMenuOpen(false)}
+              activeSection={activeSection}
+              scrollToSection={scrollToSection}
+            />
+
+            {/* Header */}
+            <header className="p-4 md:p-8 pt-24 md:pt-8">
+              <AudienceSelector
+                selectedAudience={selectedAudience}
+                onAudienceChange={setSelectedAudience}
               />
+            </header>
 
-              {/* Main Content */}
-              <main className="flex-grow">
-                <section id="intro" className="min-h-screen px-4 md:px-24">
-                  <div className="pt-16 pb-8">
-                    <motion.div
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.2 }}
-                      className="text-center max-w-7xl mx-auto"
-                    >
-                      <AnimatePresence mode="wait">
+            <DesktopNavigation
+              activeSection={activeSection}
+              scrollToSection={scrollToSection}
+            />
+
+            {/* Main Content */}
+            <main className="flex-grow">
+              <section id="intro" className="min-h-screen px-4 md:px-24">
+                <div className="pt-16 pb-8">
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-center max-w-7xl mx-auto"
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={selectedAudience}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <p className="text-3xl md:text-6xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto">
+                          {currentAudienceContent.description}
+                        </p>
+                        <div className="flex gap-4 flex-wrap justify-center">
+                          {currentAudienceContent.skills.map((skill, index) => (
+                            <span
+                              key={index}
+                              className="text-sm text-[#969696]"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Scroll Down Arrow */}
                         <motion.div
-                          key={selectedAudience}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.5 }}
+                          className="mt-16 flex justify-center"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 0.6 }}
+                          transition={{ delay: 1, duration: 1.5 }}
                         >
-                          <h1 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl mx-auto">
-                            Tariro Mpofu - Software Developer
-                          </h1>
-                          <p className="text-3xl md:text-6xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto">
-                            {currentAudienceContent.description}
+                          <motion.div
+                            className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] border-t-[#fefeff] cursor-pointer"
+                            animate={{
+                              y: [0, 10, 0],
+                              opacity: [0.6, 0.3, 0.6],
+                            }}
+                            transition={{
+                              repeat: Infinity,
+                              duration: 2,
+                              ease: "easeInOut",
+                            }}
+                            onClick={() => scrollToSection("work")}
+                          />
+                        </motion.div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
+                </div>
+              </section>
+
+              {/* Work Section */}
+              <section
+                id="work"
+                className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
+              >
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
+                    work.
+                  </h2>
+                  <div className="grid gap-8 md:gap-16 max-w-2xl mx-auto">
+                    {workProjects.map((project, index) => (
+                      <motion.div
+                        key={`${project.title}-${index}`}
+                        className="group"
+                        whileHover={{ y: -10 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block p-4 md:p-8 border border-[#969696] rounded-lg hover:border-[#969696] transition-colors relative"
+                        >
+                          <h3 className="text-xl md:text-2xl font-medium mb-4">
+                            {project.title}
+                          </h3>
+                          <p className="text-sm text-[#fefeff] mb-6">
+                            {project.description}
                           </p>
-                          <div className="flex gap-4 flex-wrap justify-center">
-                            {currentAudienceContent.skills.map((skill, index) => (
+                          <div className="flex flex-wrap gap-4">
+                            {project.tags.map((tag, tagIndex) => (
                               <span
-                                key={index}
+                                key={`${tag}-${tagIndex}`}
                                 className="text-sm text-[#969696]"
                               >
-                                {skill}
+                                {tag}
                               </span>
                             ))}
                           </div>
-
-                          {/* Scroll Down Arrow */}
-                          <motion.div
-                            className="mt-16 flex justify-center"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.6 }}
-                            transition={{ delay: 1, duration: 1.5 }}
-                          >
-                            <motion.div
-                              className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] border-t-[#fefeff] cursor-pointer"
-                              animate={{
-                                y: [0, 10, 0],
-                                opacity: [0.6, 0.3, 0.6],
-                              }}
-                              transition={{
-                                repeat: Infinity,
-                                duration: 2,
-                                ease: "easeInOut",
-                              }}
-                              onClick={() => scrollToSection("work")}
-                            />
-                          </motion.div>
-                        </motion.div>
-                      </AnimatePresence>
-                    </motion.div>
-                  </div>
-                </section>
-
-                {/* Work Section */}
-                <section
-                  id="work"
-                  className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
-                >
-                  <div className="max-w-5xl mx-auto">
-                    <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
-                      work.
-                    </h2>
-                    <div className="grid gap-8 md:gap-16 max-w-2xl mx-auto">
-                      {workProjects.map((project, index) => (
-                        <motion.div
-                          key={`${project.title}-${index}`}
-                          className="group"
-                          whileHover={{ y: -10 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block p-4 md:p-8 border border-[#969696] rounded-lg hover:border-[#969696] transition-colors relative"
-                          >
-                            <h3 className="text-xl md:text-2xl font-medium mb-4">
-                              {project.title}
-                            </h3>
-                            <p className="text-sm text-[#fefeff] mb-6">
-                              {project.description}
-                            </p>
-                            <div className="flex flex-wrap gap-4">
-                              {project.tags.map((tag, tagIndex) => (
-                                <span
-                                  key={`${tag}-${tagIndex}`}
-                                  className="text-sm text-[#969696]"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                            <div className="absolute top-4 right-4 flex gap-2">
-                              {project.platforms.map((Platform, i) => (
-                                <Platform.icon
-                                  key={i}
-                                  className="text-xl"
-                                  style={
-                                    Platform.color
-                                      ? { color: Platform.color }
-                                      : {}
-                                  }
-                                />
-                              ))}
-                            </div>
-                          </a>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </section>
-
-                {/* Background Section */}
-                <section
-                  id="background"
-                  className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
-                >
-                  <div className="max-w-5xl mx-auto">
-                    <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
-                      background.
-                    </h2>
-                    <div className="max-w-2xl mx-auto">
-                      <div className="mt-16">
-                        <a
-                          href="https://touchafrica.biz/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="relative w-40 h-40 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
-                        >
-                          <Image
-                            src="/TOUCH-AFRICA.png"
-                            alt="Touch Africa Logo"
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            style={{ objectFit: "contain" }}
-                          />
-                        </a>
-                        <div className="space-y-4">
-                          <p className="font-mono text-sm text-[#969696]">
-                            TOUCH AFRICA
-                          </p>
-                          <h3 className="text-4xl font-medium text-[#fefeff]">
-                            TECHNICAL CONSULTANT
-                          </h3>
-                          <p className="text-sm text-[#fefeff]">
-                            NOW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HARARE
-                          </p>
-                          <p className="text-sm text-[#969696] leading-relaxed">
-                            Installed, configured, and customized national POS
-                            systems{" "}
-                            <a
-                              href="https://touchafrica.biz/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              (GAAP, Unity, iVend)
-                            </a>{" "}
-                            for major retail, QSR, and convenience store clients
-                            including{" "}
-                            <a
-                              href="https://www.samlevysvillage.com/store/adidas-ideal-range/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Adidas
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://www.kfc.co.zw/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              KFC
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://www.simbisabrands.com/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Simbisa Brands
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://buffalobicycles.com/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Buffalo Bicycles
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://liquorsupplies.co.zw/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Liquor Supplies
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://zw.totalenergies.com/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Total
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://pumaenergy.com/country/zimbabwe/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Puma
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://www.zuvapetroleum.co.zw/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Zuva
-                            </a>
-                            ,{" "}
-                            <a
-                              href="https://www.redan.co.zw/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Redan
-                            </a>
-                            , and{" "}
-                            <a
-                              href="https://www.linkedin.com/company/tsebo-zim/?originalSubdomain=zw"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
-                            >
-                              Tsebo
-                            </a>
-                            . Specialized in fiscal compliance integrations, built
-                            custom automation tools, and delivered real-time
-                            analytics dashboards that transformed raw
-                            transactional data into actionable business
-                            intelligence for C-suite decision-making. Enhanced
-                            store operations through advanced inventory
-                            optimization, sales forecasting dashboards, allowing loss
-                            prevention analytics, and performance benchmarking
-                            across multi-location deployments—driving improved
-                            profit margins and operational efficiency.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* EcoCash Holdings Position */}
-                      <div className="mt-16">
-                        <a
-                          href="https://ecocashholdings.co.zw/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="relative w-48 h-40 flex-shrink-0 mb-4 block hover:opacity-80 transition-opacity cursor-pointer"
-                        >
-                          <Image
-                            src="/Ecocash logo.png"
-                            alt="Ecocash Holdings Logo"
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            style={{ objectFit: "contain" }}
-                          />
-                        </a>
-                        <div className="space-y-4">
-                          <p className="font-mono text-sm text-[#969696]">
-                            EcoCash Holdings
-                          </p>
-                          <h3 className="text-4xl font-medium text-[#fefeff]">
-                            Cassava Advanced Data Analytics, Associate Data Scientist (Internship)
-                          </h3>
-                          <p className="text-sm text-[#fefeff]">
-                            2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HYBRID
-                          </p>
-                          <p className="text-sm text-[#969696]">
-                            Developed Power BI dashboards within an Azure
-                            environment to track login issues, segment customers,
-                            and deliver personalized insights across multiple
-                            strategic business units. Created daily performance
-                            dashboards for the insurance division and enabled
-                            data-driven decision-making via a unified 360°
-                            customer view, enhancing engagement strategies and
-                            driving improved customer satisfaction and retention.
-                          </p>
-                        </div>
-                        <br />
-                        <br />
-                        <br />
-                        <div className="mt-16">
-                          <a
-                            href="https://cairnsfoods.co.zw/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="relative w-24 h-24 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
-                          >
-                            <Image
-                              src="/Cairns-Food.png"
-                              alt="Cairns Foods Logo"
-                              fill
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              style={{ objectFit: "contain" }}
-                            />
-                          </a>
-                          <div className="space-y-4">
-                            <p className="font-mono text-sm text-[#969696]">
-                              Cairns Holdings Limited
-                            </p>
-                            <h3 className="text-4xl font-medium text-[#fefeff]">
-                              IT Infrastructure Support Specialist
-                            </h3>
-                            <p className="text-sm text-[#fefeff]">
-                              2021 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HARARE
-                            </p>
-                            <p className="text-sm text-[#969696]">
-                              Provided remote IT support to branches nationwide,
-                              resolving technical issues and ensuring
-                              uninterrupted operations across Sage 1000, internal
-                              warehouse tracking systems, and mobile vendor
-                              applications. Monitored and maintained computer
-                              systems, networks, and Windows Server environments,
-                              including domain and Office 365 email services,
-                              while installing and configuring hardware and
-                              software to optimize employee productivity.
-                              Maintained the company asset register, supported
-                              database management, Active Directory, and ERP
-                              processes, and implemented preventive maintenance
-                              and disaster recovery strategies—enhancing
-                              operational efficiency, reducing downtime, and
-                              strengthening IT governance.
-                            </p>
+                          <div className="absolute top-4 right-4 flex gap-2">
+                            {project.platforms.map((Platform, i) => (
+                              <Platform.icon
+                                key={i}
+                                className="text-xl"
+                                style={
+                                  Platform.color
+                                    ? { color: Platform.color }
+                                    : {}
+                                }
+                              />
+                            ))}
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* About Section */}
-                <section
-                  id="about"
-                  className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
-                >
-                  <div className="max-w-5xl mx-auto">
-                    <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
-                      about.
-                    </h2>
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                      <div>
-                        <div className="space-y-8">
-                          <p className="text-sm text-[#fefeff]">
-                            I'm Tariro Mpofu, a software developer based in Harare with over 4
-                            years of experience across brand and product, at
-                            companies large and small. I take pride in my craft,
-                            and love mentoring earlier career developers. I
-                            develop cross functional partnerships, and thrive in
-                            complex, ambiguous environments.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="md:mt-32">
-                        <div className="space-y-8">
-                          <p className="text-sm text-[#fefeff]">
-                            My approach combines technical expertise with creative
-                            problem-solving, always striving to build solutions
-                            that are both elegant and practical. Zooming out on
-                            company strategy, zooming in on details.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <br />
-                    <br />
-
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                      <div>
-                        <div className="space-y-8">
-                          <p className="text-sm text-[#fefeff]">
-                            Beyond work, I find solace in literature, especially
-                            manga, which condenses profound themes into
-                            captivating stories. I'm also a passionate Premier
-                            League and Chelsea fan, using my data analysis skills
-                            to achieve top 50k finishes in Fantasy Premier League
-                            from 2020-2022.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="md:mt-32">
-                        <div className="space-y-8">
-                          <p className="text-sm text-[#fefeff]">
-                            Creating something from the ground up and watching it
-                            grow is incredibly fulfilling. Engaging in this
-                            process with passion feels spiritual to me.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* Contact Section */}
-                <section
-                  id="contact"
-                  className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
-                >
-                  <div className="max-w-5xl mx-auto">
-                    <div className="max-w-2xl mx-auto">
-                      <div className="max-w-2xl mx-auto flex justify-center">
-                        <Image
-                          src="/IMG_9141.JPG"
-                          alt="Tariro Mpofu - Software Developer and Technical Consultant in Zimbabwe"
-                          width={350}
-                          height={350}
-                          className="rounded-lg object-contain"
-                        />
-                      </div>
-                      <p className="text-xl md:text-xl text-[#fefeff] underline text-center">
-                        contact@tarirom.co.zw
-                      </p>
-                      <div className="flex items-center gap-2 justify-center mt-4">
-                        <div className="relative">
-                          <div className="w-2 h-2 bg-[#fefeff] rounded-full animate-pulse"></div>
-                          <div className="absolute top-0 left-0 w-2 h-2 bg-[#fefeff] rounded-full animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
-                        </div>
-                        <p className="text-l text-[#969696]">status : active</p>
-                      </div>
-                      <div className="flex flex-wrap gap-4 md:gap-8 pt-8 justify-center">
-                        <a
-                          href="https://www.linkedin.com/in/tariro-m-772554231/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm px-2 py-1"
-                        >
-                          LinkedIn
                         </a>
-                        <a
-                          href="https://github.com/TariroMpofu"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm px-2 py-1"
-                        >
-                          GitHub
-                        </a>
-                        <a
-                          href="https://x.com/thaquietknight"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm px-2 py-1"
-                        >
-                          X [Twitter]
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </main>
-
-              {/* Footer */}
-              <footer className="px-4 md:px-24 py-8 text-[#969696]">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-4 max-w-5xl mx-auto">
-                  <span className="text-sm text-center md:text-left">
-                    © 2025 Tariro Mpofu. All rights reserved.
-                  </span>
-                  <div className="flex gap-4 md:gap-8">
-                    <span className="text-sm text-center md:text-left">
-                      Design & Code by -{" "}
-                      <a
-                        href="/"
-                        className="hover:text-[#fefeff] transition-colors"
-                      >
-                        Tariro Mpofu
-                      </a>
-                    </span>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              </footer>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </>
+              </section>
+
+              {/* Background Section */}
+              <section
+                id="background"
+                className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
+              >
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
+                    background.
+                  </h2>
+                  <div className="max-w-2xl mx-auto">
+                    <div className="mt-16">
+                      <a
+                        href="https://touchafrica.biz/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative w-40 h-40 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
+                      >
+                        <Image
+                          src="/TOUCH-AFRICA.png"
+                          alt="Touch Africa Logo"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: "contain" }}
+                        />
+                      </a>
+                      <div className="space-y-4">
+                        <p className="font-mono text-sm text-[#969696]">
+                          TOUCH AFRICA
+                        </p>
+                        <h3 className="text-4xl font-medium text-[#fefeff]">
+                          TECHNICAL CONSULTANT
+                        </h3>
+                        <p className="text-sm text-[#fefeff]">
+                          NOW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HARARE
+                        </p>
+                        <p className="text-sm text-[#969696] leading-relaxed">
+                          Installed, configured, and customized national POS
+                          systems{" "}
+                          <a
+                            href="https://touchafrica.biz/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            (GAAP, Unity, iVend)
+                          </a>{" "}
+                          for major retail, QSR, and convenience store clients
+                          including{" "}
+                          <a
+                            href="https://www.samlevysvillage.com/store/adidas-ideal-range/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Adidas
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.kfc.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            KFC
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.simbisabrands.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Simbisa Brands
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://buffalobicycles.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Buffalo Bicycles
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://liquorsupplies.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Liquor Supplies
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://zw.totalenergies.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Total
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://pumaenergy.com/country/zimbabwe/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Puma
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.zuvapetroleum.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Zuva
+                          </a>
+                          ,{" "}
+                          <a
+                            href="https://www.redan.co.zw/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Redan
+                          </a>
+                          , and{" "}
+                          <a
+                            href="https://www.linkedin.com/company/tsebo-zim/?originalSubdomain=zw"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#969696] hover:text-[#fefeff] transition-colors underline decoration-dotted"
+                          >
+                            Tsebo
+                          </a>
+                          . Specialized in fiscal compliance integrations, built
+                          custom automation tools, and delivered real-time
+                          analytics dashboards that transformed raw
+                          transactional data into actionable business
+                          intelligence for C-suite decision-making. Enhanced
+                          store operations through advanced inventory
+                          optimization, sales forecasting dashboards, allowing loss
+                          prevention analytics, and performance benchmarking
+                          across multi-location deployments—driving improved
+                          profit margins and operational efficiency.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* EcoCash Holdings Position */}
+                    <div className="mt-16">
+                      <a
+                        href="https://ecocashholdings.co.zw/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative w-48 h-40 flex-shrink-0 mb-4 block hover:opacity-80 transition-opacity cursor-pointer"
+                      >
+                        <Image
+                          src="/Ecocash logo.png"
+                          alt="Ecocash Holdings Logo"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: "contain" }}
+                        />
+                      </a>
+                      <div className="space-y-4">
+                        <p className="font-mono text-sm text-[#969696]">
+                          EcoCash Holdings
+                        </p>
+                        <h3 className="text-4xl font-medium text-[#fefeff]">
+                          Cassava Advanced Data Analytics, Associate Data Scientist (Internship)
+                        </h3>
+                        <p className="text-sm text-[#fefeff]">
+                          2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HYBRID
+                        </p>
+                        <p className="text-sm text-[#969696]">
+                          Developed Power BI dashboards within an Azure
+                          environment to track login issues, segment customers,
+                          and deliver personalized insights across multiple
+                          strategic business units. Created daily performance
+                          dashboards for the insurance division and enabled
+                          data-driven decision-making via a unified 360°
+                          customer view, enhancing engagement strategies and
+                          driving improved customer satisfaction and retention.
+                        </p>
+                      </div>
+                      <br />
+                      <br />
+                      <br />
+                      <div className="mt-16">
+                        <a
+                          href="https://cairnsfoods.co.zw/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative w-24 h-24 flex-shrink-0 mb-8 block hover:opacity-80 transition-opacity cursor-pointer"
+                        >
+                          <Image
+                            src="/Cairns-Food.png"
+                            alt="Cairns Foods Logo"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            style={{ objectFit: "contain" }}
+                          />
+                        </a>
+                        <div className="space-y-4">
+                          <p className="font-mono text-sm text-[#969696]">
+                            Cairns Holdings Limited
+                          </p>
+                          <h3 className="text-4xl font-medium text-[#fefeff]">
+                            IT Infrastructure Support Specialist
+                          </h3>
+                          <p className="text-sm text-[#fefeff]">
+                            2021 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HARARE
+                          </p>
+                          <p className="text-sm text-[#969696]">
+                            Provided remote IT support to branches nationwide,
+                            resolving technical issues and ensuring
+                            uninterrupted operations across Sage 1000, internal
+                            warehouse tracking systems, and mobile vendor
+                            applications. Monitored and maintained computer
+                            systems, networks, and Windows Server environments,
+                            including domain and Office 365 email services,
+                            while installing and configuring hardware and
+                            software to optimize employee productivity.
+                            Maintained the company asset register, supported
+                            database management, Active Directory, and ERP
+                            processes, and implemented preventive maintenance
+                            and disaster recovery strategies—enhancing
+                            operational efficiency, reducing downtime, and
+                            strengthening IT governance.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* About Section */}
+              <section
+                id="about"
+                className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
+              >
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
+                    about.
+                  </h2>
+                  <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div>
+                      <div className="space-y-8">
+                        <p className="text-sm text-[#fefeff]">
+                          I'm a software developer based in Harare with over 4
+                          years of experience across brand and product, at
+                          companies large and small. I take pride in my craft,
+                          and love mentoring earlier career developers. I
+                          develop cross functional partnerships, and thrive in
+                          complex, ambiguous environments.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="md:mt-32">
+                      <div className="space-y-8">
+                        <p className="text-sm text-[#fefeff]">
+                          My approach combines technical expertise with creative
+                          problem-solving, always striving to build solutions
+                          that are both elegant and practical. Zooming out on
+                          company strategy, zooming in on details.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br />
+                  <br />
+
+                  <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div>
+                      <div className="space-y-8">
+                        <p className="text-sm text-[#fefeff]">
+                          Beyond work, I find solace in literature, especially
+                          manga, which condenses profound themes into
+                          captivating stories. I'm also a passionate Premier
+                          League and Chelsea fan, using my data analysis skills
+                          to achieve top 50k finishes in Fantasy Premier League
+                          from 2020-2022.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="md:mt-32">
+                      <div className="space-y-8">
+                        <p className="text-sm text-[#fefeff]">
+                          Creating something from the ground up and watching it
+                          grow is incredibly fulfilling. Engaging in this
+                          process with passion feels spiritual to me.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Contact Section */}
+              <section
+                id="contact"
+                className="min-h-screen px-4 md:px-24 py-8 md:py-16 pt-20"
+              >
+                <div className="max-w-5xl mx-auto">
+                  <div className="max-w-2xl mx-auto">
+                    <div className="max-w-2xl mx-auto flex justify-center">
+                      <Image
+                        src="/IMG_9141.JPG"
+                        alt="Tariro M."
+                        width={350}
+                        height={350} // Keep same ratio as image
+                        className="rounded-lg object-contain"
+                      />
+                    </div>
+                    <p className="text-xl md:text-xl text-[#fefeff] underline text-center">
+                      contact@tarirom.co.zw
+                    </p>
+                    <div className="flex items-center gap-2 justify-center mt-4">
+                      <div className="relative">
+                        <div className="w-2 h-2 bg-[#fefeff] rounded-full animate-pulse"></div>
+                        <div className="absolute top-0 left-0 w-2 h-2 bg-[#fefeff] rounded-full animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
+                      </div>
+                      <p className="text-l text-[#969696]">status : active</p>
+                    </div>
+                    <div className="flex flex-wrap gap-4 md:gap-8 pt-8 justify-center">
+                      <a
+                        href="https://www.linkedin.com/in/tariro-m-772554231/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm px-2 py-1"
+                      >
+                        LinkedIn
+                      </a>
+                      <a
+                        href="https://github.com/TariroMpofu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm px-2 py-1"
+                      >
+                        GitHub
+                      </a>
+                      <a
+                        href="https://x.com/thaquietknight"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm px-2 py-1"
+                      >
+                        X [Twitter]
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            {/* Footer */}
+            <footer className="px-4 md:px-24 py-8 text-[#969696]">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4 max-w-5xl mx-auto">
+                <span className="text-sm text-center md:text-left">
+                  © 2025 Tariro M.. All rights reserved.
+                </span>
+                <div className="flex gap-4 md:gap-8">
+                  <span className="text-sm text-center md:text-left">
+                    Design & Code by -{" "}
+                    <a
+                      href="/"
+                      className="hover:text-[#fefeff] transition-colors"
+                    >
+                      Tariro M.
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </footer>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
+
+
