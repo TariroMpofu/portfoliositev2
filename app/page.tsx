@@ -56,6 +56,26 @@ const sections: Section[] = [
 
 const workProjects: WorkProject[] = [
   {
+    title: "StockRoom (iVend Stock Take App)",
+    description:
+      "A cross-platform mobile inventory management app built for retail technicians. StockRoom enables field staff to perform barcode-powered stock counts, manage warehouse sessions with offline resilience, and submit reconciled inventory directly to the iVend POS system from handheld devices.",
+    tags: [
+      "Flutter",
+      "Dart",
+      "iOS",
+      "Android",
+      "Supabase",
+      "REST API",
+      "Provider",
+      "Barcode Scanning",
+      "Offline-first",
+      "Enterprise",
+      "Inventory Management",
+    ],
+    link: "https://tarirom.co.zw",
+    platforms: [{ icon: BiMobile, color: "#00A4EF" }, { icon: BsAndroid }],
+  },
+  {
     title: "Relay",
     description:
       "Designed and developed a Flutter-based CRM companion app for the Touch Africa team, integrating Gmail and Zoho APIs to centralize communication, automate handovers, and streamline follow-ups. Enhanced team coordination by enabling structured tracking of client interactions and reducing manual effort in daily workflows.",
