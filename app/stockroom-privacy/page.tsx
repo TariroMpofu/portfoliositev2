@@ -137,7 +137,7 @@ export default function StockRoomPrivacy() {
       <header className="sticky top-0 z-30 backdrop-blur bg-black/70 border-b border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
           <Link href="/" className="text-sm font-medium tracking-tight text-[#fefeff]">
-            Tariro M
+            TariroM.
           </Link>
           <div className="hidden md:flex items-center gap-6 text-xs font-mono text-[#969696] uppercase tracking-[0.16em]">
             <span>Privacy Policy</span>
@@ -184,7 +184,7 @@ export default function StockRoomPrivacy() {
               <dt className="text-[#969696] text-xs uppercase tracking-[0.14em]">
                 Developer
               </dt>
-              <dd className="mt-1.5 text-sm text-[#fefeff]">Tariro M</dd>
+              <dd className="mt-1.5 text-sm text-[#fefeff]">TariroM.</dd>
             </div>
             <div>
               <dt className="text-[#969696] text-xs uppercase tracking-[0.14em]">
@@ -710,7 +710,7 @@ export default function StockRoomPrivacy() {
                 the data practices of StockRoom, please contact:
               </Body>
               <div className="rounded-lg border border-[#2c2c2c] bg-[#0f0f0f] p-6 md:p-8 max-w-2xl">
-                <p className="text-base font-medium text-[#fefeff]">Tariro M</p>
+                <p className="text-base font-medium text-[#fefeff]">TariroM.</p>
                 <div className="mt-3 grid grid-cols-1 sm:grid-cols-[80px_1fr] gap-y-2 gap-x-6 text-sm">
                   <span className="text-[#969696]">Email</span>
                   <a
@@ -731,7 +731,7 @@ export default function StockRoomPrivacy() {
                 </div>
               </div>
               <Body muted>
-                StockRoom is developed and maintained by Tariro M. The iVend
+                StockRoom is developed and maintained by TariroM., The iVend
                 platform is a product of CitiXsys Technologies. StockRoom is an
                 independent integration application and is not affiliated with
                 or endorsed by CitiXsys Technologies.
@@ -747,7 +747,7 @@ export default function StockRoomPrivacy() {
                 ← Back to portfolio
               </Link>
               <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#969696]">
-                © 2026 Tariro M · v1.2
+                © 2026 TariroM. · v1.2
               </p>
             </div>
 
