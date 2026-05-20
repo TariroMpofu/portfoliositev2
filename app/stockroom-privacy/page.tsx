@@ -258,7 +258,7 @@ export default function StockRoomPrivacy() {
                 StockRoom is a mobile inventory management
                 application built for enterprise use. It is designed for
                 authorized retail staff and field technicians who perform
-                physical stock counts using theIvend Retail a connected retail management solution.
+                physical stock counts using IVEND Retail a connected retail management solution.
               </Body>
               <Body muted>
                 This Privacy Policy explains what data the App collects, how it
@@ -367,9 +367,10 @@ export default function StockRoomPrivacy() {
                     <li>Product identifiers (ID, code, name, barcode)</li>
                     <li>Counted quantities</li>
                     <li>Unit of measure selections</li>
+                     <li>Warehouse Information</li>
                     <li>
                       Physical location identifiers (if your warehouse uses
-                      location tracking)
+                      locations)
                     </li>
                     <li>Timestamps for each count entry</li>
                   </Bullets>
