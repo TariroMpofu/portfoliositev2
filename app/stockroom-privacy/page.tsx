@@ -60,7 +60,7 @@ export default function StockRoomPrivacy() {
               <li><span className="text-[#fefeff]">Stocktake user credentials</span> — a username and password entered by the individual technician at login.</li>
             </ul>
             <p className="text-sm text-[#fefeff] leading-relaxed">
-              These credentials are stored locally on the device in SharedPreferences (not encrypted at the application level). They are transmitted only to your organization’s own iVend server over the local network or configured host. They are never sent to the developer or any third-party service.
+              API credentials (apiUserId and apiPassword) are stored in the device's hardware-backed secure enclave — Android Keystore on Android, iOS Keychain on iOS — using flutter_secure_storage. They are never written to unencrypted storage. Devices running a version of the App prior to v3.0 are automatically migrated to secure storage on first launch after update.
             </p>
           </div>
 
@@ -160,10 +160,12 @@ export default function StockRoomPrivacy() {
           <div className="space-y-3 text-sm text-[#969696] leading-relaxed">
             <p className="text-[#fefeff] font-medium">On-Device Storage</p>
             <ul className="list-disc list-inside space-y-1">
-              <li>App configuration (server URL, API credentials, store ID) — SharedPreferences — until manually cleared or app uninstalled</li>
+              <li>API credentials (apiUserId, apiPassword) — Android Keystore / iOS Keychain (hardware-encrypted) — never written to unencrypted storage</li>
+              <li>Non-sensitive config (baseUrl, storeId, storeName) — SharedPreferences — until manually cleared or app uninstalled</li>
               <li>User login session — SharedPreferences — until manual logout</li>
               <li>Active session draft (stock count in progress) — SharedPreferences — until submitted or explicitly discarded</li>
-              <li>Device hardware ID — iOS Keychain / SharedPreferences (Android) — persists across reinstalls</li>
+              <li>Device hardware ID — iOS Keychain / Android Keystore (via flutter_secure_storage) — persists across reinstalls</li>
+              <li>Licence gate cache (gate_cache_v1) — Android Keystore / iOS Keychain — cleared on revocation or expiry</li>
               <li>Application log files — local file system — 30 days (rolling)</li>
             </ul>
             <p className="text-[#fefeff] font-medium mt-4">Remote Storage (Licensing Server)</p>
@@ -203,10 +205,16 @@ export default function StockRoomPrivacy() {
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold">8. Network Security</h2>
           <p className="text-sm text-[#fefeff] leading-relaxed">
-            All communication with the Supabase licensing server is encrypted over HTTPS.
+            All communication between StockRoom and the Supabase licensing server is encrypted over HTTPS.
           </p>
           <p className="text-sm text-[#fefeff] leading-relaxed">
-            Communication with the iVend API server may use HTTP (unencrypted), as many iVend deployments operate on internal networks without TLS. If your organization’s iVend server supports HTTPS, it is strongly recommended to configure the App’s base URL accordingly.
+            Communication with the iVend Retail API server (/iVendAPI/iVendAPI.svc/WebAPI) uses the transport protocol configured by your organisation's iVend Retail environment. Where that environment uses HTTP rather than HTTPS, API credentials and request data are transmitted without transport-layer encryption. StockRoom does not control or modify the iVend Retail API transport layer.
+          </p>
+          <p className="text-sm text-[#fefeff] leading-relaxed">
+            This risk is operationally controlled when StockRoom is deployed within a properly isolated private network (LAN, VLAN, or VPN) with no external access. It is the responsibility of the client's IT administrator to ensure that the iVend Retail API server is not exposed via public IP addresses, port forwarding, or any internet-accessible network configuration.
+          </p>
+          <p className="text-sm text-[#fefeff] leading-relaxed">
+            Before deploying StockRoom, all client IT administrators are required to review and sign the Network Security Acknowledgement — StockRoom Deployment (v1.0), which sets out the specific network isolation requirements and the developer's limitations of liability in full. A copy of this document is provided to the licensed organisation's administrator at onboarding.
           </p>
         </section>
 
