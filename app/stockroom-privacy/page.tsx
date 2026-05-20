@@ -255,10 +255,10 @@ export default function StockRoomPrivacy() {
             {/* 1 — Overview */}
             <Section id="s1" num="01" title="Overview">
               <Body>
-                StockRoom ("the App") is a mobile inventory management
+                StockRoom is a mobile inventory management
                 application built for enterprise use. It is designed for
                 authorized retail staff and field technicians who perform
-                physical stock counts using the iVend Point of Sale platform.
+                physical stock counts using theIvend Retail a connected retail management solution.
               </Body>
               <Body muted>
                 This Privacy Policy explains what data the App collects, how it
