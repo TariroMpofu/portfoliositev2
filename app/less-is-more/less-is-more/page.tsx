@@ -50,7 +50,7 @@ export default function Home() {
       </nav>
 
       {/* About Section */}
-      <section id="about" className="p-16">
+      <section id="about" className="px-5 py-20 sm:p-16">
   <div className="max-w-prose mx-auto">
     <h2 className="text-2xl font-bold text-black text-center">less is more</h2>
     <br />

@@ -85,7 +85,7 @@ export default function Home() {
       )}
 
       {/* About Section */}
-      <section id="about" className="p-16 text-left">
+      <section id="about" className="px-5 py-20 sm:p-16 text-left">
         <h2 className="text-2xl font-bold text-black text-center">Some Thoughts</h2>
         <br />
         <ul className="mt-6 list-none text-center ">
