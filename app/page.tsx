@@ -343,22 +343,35 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-[26px] flex items-center justify-between border-t border-border-divider pt-5">
-                {p.linkHref && p.linkHref !== "#" ? (
-                  <a
-                    href={p.linkHref}
-                    target={p.linkHref.startsWith("http") ? "_blank" : undefined}
-                    rel={p.linkHref.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-2 font-mono text-[13px] text-fg no-underline transition-opacity hover:opacity-65"
-                  >
-                    {p.linkLabel}
-                    <ArrowUpRight />
-                  </a>
-                ) : (
-                  <span className="font-mono text-[13px] text-text-faint">
-                    Internal / no public link
-                  </span>
-                )}
+              <div className="mt-[26px] flex items-center justify-between gap-4 border-t border-border-divider pt-5">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                  {p.linkHref && p.linkHref !== "#" ? (
+                    <a
+                      href={p.linkHref}
+                      target={p.linkHref.startsWith("http") ? "_blank" : undefined}
+                      rel={p.linkHref.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-2 font-mono text-[13px] text-fg no-underline transition-opacity hover:opacity-65"
+                    >
+                      {p.linkLabel}
+                      <ArrowUpRight />
+                    </a>
+                  ) : (
+                    <span className="font-mono text-[13px] text-text-faint">
+                      Internal / no public link
+                    </span>
+                  )}
+                  {p.link2Href && (
+                    <a
+                      href={p.link2Href}
+                      target={p.link2Href.startsWith("http") ? "_blank" : undefined}
+                      rel={p.link2Href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-2 font-mono text-[13px] text-text-label no-underline transition-colors hover:text-fg"
+                    >
+                      {p.link2Label}
+                      <ArrowUpRight />
+                    </a>
+                  )}
+                </div>
                 <span className="font-mono text-[12px] text-text-faint">{p.year}</span>
               </div>
             </article>

@@ -16,6 +16,7 @@ export type ProjectId =
   | "churn"
   | "fdms"
   | "mental"
+  | "shelfeye"
   | "sap"
   | "kwizi"
   | "islamic"
@@ -30,12 +31,22 @@ export interface Project {
   tags: string[];
   linkLabel: string;
   linkHref: string;
+  // Optional second link (e.g. store listing + privacy policy).
+  link2Label?: string;
+  link2Href?: string;
   // Per-audience highlight callout. Optional — extra projects have none.
   hi?: { recruiters: string; engineers: string; product: string };
 }
 
 // Extra projects always shown after the ranked five (same order for every audience).
-const EXTRA_ORDER: ProjectId[] = ["sap", "kwizi", "islamic", "asset", "website"];
+const EXTRA_ORDER: ProjectId[] = [
+  "shelfeye",
+  "sap",
+  "kwizi",
+  "islamic",
+  "asset",
+  "website",
+];
 
 export const AUDIENCES: Record<Audience, AudienceConfig> = {
   anyone: {
@@ -87,7 +98,7 @@ export const PROJECTS: Record<ProjectId, Project> = {
     meta: "MOBILE · iOS / ANDROID",
     year: "2026",
     blurb:
-      "A cross-platform mobile inventory app for retail technicians — barcode-powered stock counts, offline-resilient warehouse sessions, and reconciled inventory submitted straight to the iVend POS from handheld devices.",
+      "A deliberately simple app with outsized impact. StockRoom turns a phone into a barcode-powered stock-counting tool — field staff scan, count and submit reconciled inventory straight to the iVend POS, even with patchy connectivity. It replaces slow, error-prone manual stock-takes and makes a tedious job genuinely easy, which is exactly why teams keep reaching for it.",
     tags: [
       "Flutter",
       "Dart",
@@ -99,8 +110,11 @@ export const PROJECTS: Record<ProjectId, Project> = {
       "Barcode Scanning",
       "Offline-first",
     ],
-    linkLabel: "Privacy & details",
-    linkHref: "/stockroom-privacy",
+    linkLabel: "Get it on Google Play",
+    linkHref:
+      "https://play.google.com/store/apps/details?id=zw.co.tarirom.stocktake&pcampaignid=web_share",
+    link2Label: "Privacy & details",
+    link2Href: "/stockroom-privacy",
     hi: {
       recruiters:
         "The flagship of my portfolio — shipped to field staff across multiple retail sites.",
@@ -183,6 +197,25 @@ export const PROJECTS: Record<ProjectId, Project> = {
       product:
         "Translated raw survey data into insights that guide awareness efforts.",
     },
+  },
+  shelfeye: {
+    title: "ShelfEye — iVend Price Checker",
+    meta: "MOBILE · iOS / ANDROID",
+    year: "2026",
+    blurb:
+      "A fast, lightweight iVend retail product lookup that complements StockRoom. Scan or type a barcode and ShelfEye instantly returns the product name, code, base unit and price — including every unit-of-measure with its own price and conversion (e.g. \"1 Pack = 6 EA\"). Read-only by design: no stocktaking, no writes, just a clean answer to \"what is this and how much is it?\"",
+    tags: [
+      "Flutter",
+      "Dart",
+      "iOS",
+      "Android",
+      "iVend API",
+      "Barcode Scanning",
+      "REST API",
+    ],
+    linkLabel: "View demo",
+    linkHref:
+      "https://drive.google.com/file/d/1IuUoNudl18YZv6sCNfebvipsmmPiavkd/view?usp=share_link",
   },
   sap: {
     title: "SAP Sales Analysis Dashboard (Sample)",

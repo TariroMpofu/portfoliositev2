@@ -178,6 +178,16 @@ export default function StockRoomPrivacy() {
             staff who deploy and use it.
           </p>
 
+          <a
+            href="https://play.google.com/store/apps/details?id=zw.co.tarirom.stocktake&pcampaignid=web_share"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#2c2c2c] bg-[#0f0f0f] px-5 text-sm font-medium text-[#fefeff] transition-colors hover:border-[#555]"
+          >
+            Get StockRoom on Google Play
+            <span aria-hidden className="text-[#969696]">↗</span>
+          </a>
+
           {/* Definition list */}
           <dl className="grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-5 pt-8 border-t border-[#1a1a1a] max-w-3xl">
             <div>
