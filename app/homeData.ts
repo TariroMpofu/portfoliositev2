@@ -16,7 +16,7 @@ export type ProjectId =
   | "churn"
   | "fdms"
   | "mental"
-  | "shelfeye"
+  | "shelfline"
   | "sap"
   | "kwizi"
   | "islamic"
@@ -38,15 +38,8 @@ export interface Project {
   hi?: { recruiters: string; engineers: string; product: string };
 }
 
-// Extra projects always shown after the ranked five (same order for every audience).
-const EXTRA_ORDER: ProjectId[] = [
-  "shelfeye",
-  "sap",
-  "kwizi",
-  "islamic",
-  "asset",
-  "website",
-];
+// Extra projects always shown after the ranked group (same order for every audience).
+const EXTRA_ORDER: ProjectId[] = ["sap", "kwizi", "islamic", "asset", "website"];
 
 export const AUDIENCES: Record<Audience, AudienceConfig> = {
   anyone: {
@@ -55,7 +48,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     statement:
       "I'm a developer who loves creating meaningful digital experiences — with a focus on tech, minimalism, and where they intersect.",
     caption: "SELECTED PROJECTS",
-    order: ["stockroom", "relay", "churn", "fdms", "mental", ...EXTRA_ORDER],
+    order: ["stockroom", "shelfline", "relay", "churn", "fdms", "mental", ...EXTRA_ORDER],
   },
   recruiters: {
     label: "Recruiters",
@@ -63,7 +56,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     statement:
       "4+ years shipping production software across mobile, data and enterprise POS — for clients like KFC, Adidas and Simbisa Brands.",
     caption: "RANKED BY IMPACT",
-    order: ["stockroom", "fdms", "churn", "relay", "mental", ...EXTRA_ORDER],
+    order: ["stockroom", "fdms", "churn", "shelfline", "relay", "mental", ...EXTRA_ORDER],
   },
   engineers: {
     label: "Engineers",
@@ -71,7 +64,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     statement:
       "Flutter, Python and C#. Offline-first mobile, Random-Forest ML, and fiscal-compliance integrations on iVend, Unity & GAAP.",
     caption: "RANKED BY DEPTH",
-    order: ["stockroom", "churn", "relay", "fdms", "mental", ...EXTRA_ORDER],
+    order: ["stockroom", "shelfline", "churn", "relay", "fdms", "mental", ...EXTRA_ORDER],
   },
   product: {
     label: "Product Managers",
@@ -79,7 +72,7 @@ export const AUDIENCES: Record<Audience, AudienceConfig> = {
     statement:
       "I turn ambiguous requirements into shipped product — barcode stock-takes, CRM automation, and compliance tooling that hit hard deadlines.",
     caption: "RANKED BY OUTCOMES",
-    order: ["fdms", "stockroom", "relay", "mental", "churn", ...EXTRA_ORDER],
+    order: ["fdms", "stockroom", "shelfline", "relay", "mental", "churn", ...EXTRA_ORDER],
   },
 };
 
@@ -98,7 +91,7 @@ export const PROJECTS: Record<ProjectId, Project> = {
     meta: "MOBILE · iOS / ANDROID",
     year: "2026",
     blurb:
-      "A deliberately simple app with outsized impact. StockRoom turns a phone into a barcode-powered stock-counting tool — field staff scan, count and submit reconciled inventory straight to the iVend POS, even with patchy connectivity. It replaces slow, error-prone manual stock-takes and makes a tedious job genuinely easy, which is exactly why teams keep reaching for it.",
+      "StockRoom turns the stock-take — usually a slow, paper-driven chore that ties up staff and still gets numbers wrong — into a fast, accurate mobile workflow. Teams scan to count, keep working when the network drops, and push reconciled inventory straight into iVend with zero manual re-keying. The payoff: counts finished in a fraction of the time, stock figures the business can actually trust, and a rollout that scales cleanly from a single store to an entire retail estate.",
     tags: [
       "Flutter",
       "Dart",
@@ -121,7 +114,7 @@ export const PROJECTS: Record<ProjectId, Project> = {
       engineers:
         "Offline-first sync, Keychain / SSAID device licensing via Supabase, Provider state, live barcode decode.",
       product:
-        "Replaced manual stock-takes: faster counts, fewer reconciliation errors, deployed enterprise-wide.",
+        "Stock-takes done in a fraction of the time with inventory figures the business can trust — and it scales from one store to a whole estate.",
     },
   },
   relay: {
@@ -198,12 +191,12 @@ export const PROJECTS: Record<ProjectId, Project> = {
         "Translated raw survey data into insights that guide awareness efforts.",
     },
   },
-  shelfeye: {
-    title: "ShelfEye — iVend Price Checker",
+  shelfline: {
+    title: "ShelfLine — iVend Price Checker",
     meta: "MOBILE · iOS / ANDROID",
     year: "2026",
     blurb:
-      "A fast, lightweight iVend retail product lookup that complements StockRoom. Scan or type a barcode and ShelfEye instantly returns the product name, code, base unit and price — including every unit-of-measure with its own price and conversion (e.g. \"1 Pack = 6 EA\"). Read-only by design: no stocktaking, no writes, just a clean answer to \"what is this and how much is it?\"",
+      "ShelfLine puts an instant, self-service price check in every aisle. A shopper scans or types a barcode and immediately sees the product name, price, product image (when set in iVend) and every unit-of-measure with its conversion (e.g. \"1 Pack = 6 EA\") — no waiting for staff, no surprises at the till. For the retailer that becomes a sales lever: confident shoppers buy more and abandon less, staff spend their time selling instead of fielding \"how much is this?\", and the aisle itself becomes an interactive touchpoint. Built on iVend and aligned to the store's planogram, so the price is always right for the products in front of the customer.",
     tags: [
       "Flutter",
       "Dart",
@@ -216,6 +209,14 @@ export const PROJECTS: Record<ProjectId, Project> = {
     linkLabel: "View demo",
     linkHref:
       "https://drive.google.com/file/d/1IuUoNudl18YZv6sCNfebvipsmmPiavkd/view?usp=share_link",
+    hi: {
+      recruiters:
+        "A standalone, customer-facing retail product — self-service price checking deployed at the shelf edge.",
+      engineers:
+        "Layered repository / service / API architecture, pure-Dart and testable; reads product, image, UOM and pricing from iVend with every failure mapped to readable text. Planogram-aware, read-only.",
+      product:
+        "Shoppers get instant price confidence on their own — more sales, fewer abandoned baskets, and staff freed to actually sell.",
+    },
   },
   sap: {
     title: "SAP Sales Analysis Dashboard (Sample)",

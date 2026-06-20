@@ -96,6 +96,10 @@ export default function Home() {
       }
     }
 
+    // Scroll-spy: a thin detection band across the viewport's vertical centre.
+    // (A percentage threshold fails for sections taller than the viewport —
+    // e.g. Work / Background — which can never be 45% visible, so they'd never
+    // become active. A centre band works regardless of section height.)
     const spy = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -103,7 +107,7 @@ export default function Home() {
           if (e.isIntersecting && id) setActive(id);
         });
       },
-      { threshold: 0.45 }
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
     );
     document.querySelectorAll("[data-section]").forEach((el) => spy.observe(el));
     observers.push(spy);
